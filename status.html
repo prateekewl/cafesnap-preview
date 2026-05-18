@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.gtag=function(){};window.dataLayer=window.dataLayer||[];</script>
+    <!-- Google Consent Mode v2 -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
+    if(localStorage.getItem('cafesnap_consent')==='granted'){gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});}
+    </script>
+    <script async src="about:blank" data-preview-disabled-analytics="1"></script>
+    <script>gtag('js',new Date());gtag('config','G-B1H9YKBDTN');</script>
+    <meta charset="UTF-8">
+    
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffcb05">
+    <title>Check Booking - CafeSnap</title>
+    <meta name="description" content="Check the status of your CafeSnap Pokemon Cafe reservation. View your booking, request changes, or cancel.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="icon" type="image/svg+xml" href="/cafesnap-preview/static/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/cafesnap-preview/static/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/cafesnap-preview/static/apple-touch-icon.png">
+    <link rel="canonical" href="https://cafesnapbot.com/status">
+    <link rel="alternate" hreflang="en" href="https://cafesnapbot.com/status">
+    <link rel="alternate" hreflang="es" href="https://cafesnapbot.com/status?lang=es">
+    <link rel="alternate" hreflang="x-default" href="https://cafesnapbot.com/status">
+    <meta property="og:title" content="Check Booking - CafeSnap">
+    <meta property="og:description" content="Check the status of your CafeSnap Pokemon Cafe reservation.">
+    <meta property="og:url" content="https://cafesnapbot.com/status">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CafeSnap">
+    <meta property="og:image" content="https://cafesnapbot.com/static/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://cafesnapbot.com/static/og-image.png">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #fff8f0;
+            color: #333;
+            min-height: 100vh;
+        }
+        .header {
+            background: #ffcb05;
+            padding: 18px 20px 14px;
+            min-height: 92px;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            border-radius: 0 0 28px 28px;
+            box-shadow: 0 4px 20px rgba(255,203,5,0.3);
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 6px, transparent 6px);
+            background-size: 32px 32px;
+            border-radius: 0 0 28px 28px;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e3350d, #ffcb05, #3b4cca);
+        }
+        .header h1 { font-size: 1.6rem; font-weight: 900; color: #1a1b3a; letter-spacing: -0.5px; position: relative; }
+        .header h1 span { color: #e3350d; }
+        .header a { text-decoration: none; position: relative; }
+        .container {
+            max-width: 520px;
+            margin: 32px auto;
+            padding: 0 16px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 4px 24px rgba(255,203,5,0.15);
+            border: 2px solid rgba(255,203,5,0.3);
+        }
+        .card h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1a1b3a;
+            margin-bottom: 16px;
+        }
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #1a1b3a;
+            margin-bottom: 6px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Nunito', sans-serif;
+        }
+        .form-group input:focus { outline: none; border-color: #3b4cca; }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: #ffcb05;
+            color: #1a1b3a;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            cursor: pointer;
+        }
+        .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,203,5,0.3); }
+
+        .results { margin-top: 24px; }
+        .no-results {
+            text-align: center;
+            color: #888;
+            padding: 24px;
+            font-weight: 600;
+        }
+
+        .booking-card {
+            background: #fffbea;
+            border: 2px solid rgba(255,203,5,0.2);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+        .booking-card .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .booking-card .location {
+            font-weight: 800;
+            font-size: 1rem;
+            color: #1a1b3a;
+        }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .status-pending { background: #fff3b0; color: #8a6d00; }
+        .status-searching { background: #bbdefb; color: #1565c0; }
+        .status-waiting_for_release { background: #fff3b0; color: #8a6d00; }
+        .status-scanning_cancellations { background: #bbdefb; color: #1565c0; }
+        .status-booked { background: #c8e6c9; color: #2e7d32; }
+        .status-failed { background: #ffcdd2; color: #c62828; }
+        .status-refunded { background: #e0e0e0; color: #555; }
+        .status-cancelled { background: #e0e0e0; color: #555; }
+        .status-disputed { background: #ffcdd2; color: #c62828; }
+
+        .booking-card .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            font-size: 0.82rem;
+        }
+        .booking-card .detail-label { color: #888; font-weight: 600; }
+        .booking-card .detail-value { color: #1a1b3a; font-weight: 700; text-align: right; }
+        .booking-card .time-confirmed {
+            margin-top: 10px;
+            padding: 10px;
+            background: #c8e6c9;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 800;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+<div id="cafesnap-preview-ribbon" style="position:fixed;top:0;left:0;right:0;
+z-index:2147483647;background:#b91c1c;color:#fff;text-align:center;
+font:600 13px/1.45 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+padding:6px 10px;letter-spacing:.3px;pointer-events:none;
+box-shadow:0 1px 4px rgba(0,0,0,.35);">
+PREVIEW - visual only, not the live site
+</div>
+<div id="cafesnap-preview-spacer" style="height:30px;"></div>
+
+    <div class="header" style="display:flex;align-items:center;justify-content:space-between;">
+        <div style="flex:1;display:flex;align-items:center;gap:8px;">
+            <a href="/?lang=es" style="color:#1a1b3a;font-weight:800;font-size:0.78rem;text-decoration:none;opacity:0.7;position:relative;">ES</a>
+        </div>
+        <div style="position:relative;">
+            <a href="/cafesnap-preview/index.html" style="text-decoration:none;"><h1>Cafe<span>Snap</span></h1></a>
+            <p style="font-size:0.9rem;color:rgba(26,27,58,0.6);font-weight:700;margin-top:4px;position:relative;">Pokemon Cafe reservations, sorted.</p>
+        </div>
+        <div style="flex:1;display:flex;justify-content:flex-end;position:relative;">
+            <a href="/cafesnap-preview/status.html" style="color:#1a1b3a;opacity:0.7;font-weight:700;font-size:0.8rem;text-decoration:none;">Check booking</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Check your booking</h2>
+
+            <!-- Step 1: Email -->
+            <div id="step-email">
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" id="email" placeholder="The email you used when booking">
+                </div>
+                <button class="btn" id="btn-send" onclick="sendCode()">Find my bookings</button>
+                <p id="send-error" style="color:#c62828;font-size:0.82rem;font-weight:600;margin-top:8px;display:none;"></p>
+            </div>
+
+            <!-- Step 2: Verification code -->
+            <div id="step-verify" style="display:none;">
+                <div style="padding:14px;background:#e8f5e9;border-radius:10px;font-size:0.85rem;color:#2e7d32;font-weight:600;line-height:1.5;margin-bottom:16px;">
+                    We sent a 6-digit code to <strong id="verify-email-display"></strong>. Check your inbox (and spam folder).
+                </div>
+                <div class="form-group">
+                    <label>Verification code</label>
+                    <input type="text" id="verify-code" placeholder="Enter 6-digit code" maxlength="6" inputmode="numeric" style="letter-spacing:4px;font-size:1.2rem;text-align:center;font-weight:800;">
+                </div>
+                <button class="btn" id="btn-verify" onclick="verifyCode()">Verify</button>
+                <div style="display:flex;justify-content:space-between;margin-top:10px;">
+                    <button onclick="sendCode()" style="background:none;border:none;color:#3b4cca;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;">Resend code</button>
+                    <button onclick="goBackToEmail()" style="background:none;border:none;color:#888;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;">Use different email</button>
+                </div>
+                <p id="verify-error" style="color:#c62828;font-size:0.82rem;font-weight:600;margin-top:8px;display:none;"></p>
+            </div>
+
+            <!-- Step 3: Results (shown after verification) -->
+            <div id="step-results" style="display:none;">
+                <div style="margin-top:0;padding:14px;background:#fffbea;border-radius:10px;font-size:0.78rem;color:#666;line-height:1.6;">
+                    <strong style="color:#1a1b3a;">What do the statuses mean?</strong><br>
+                    <span style="color:#ff9800;font-weight:700;">Payment pending</span> = complete your payment to start scanning<br>
+                    <span style="color:#1565c0;font-weight:700;">Searching</span> = we&#39;re actively looking for your slot<br>
+                    <span style="color:#b8860b;font-weight:700;">Waiting / Checking</span> = your date has not opened at the cafe yet (or is full); our bot fires the instant it opens and keeps checking. You are emailed the moment we secure it, or refunded in full if we cannot.<br>
+                    <span style="color:#2e7d32;font-weight:700;">Confirmed</span> = you&#39;re in! Check your email for details<br>
+                    <span style="color:#c62828;font-weight:700;">Could not book</span> = we tried but couldn&#39;t get a slot<br>
+                    <span style="color:#555;font-weight:700;">Refunded</span> = booking cancelled, money returned
+                </div>
+                <div style="margin-top:10px;padding:12px 14px;background:#fffbea;border-radius:10px;font-size:0.78rem;color:#8a6d00;line-height:1.5;">
+                    Reservations are non-refundable once confirmed. Full refund if we can&#39;t secure your booking.
+                </div>
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+        <p style="text-align:center;margin-top:20px;font-size:0.82rem;color:#888;">Need help? <a href="https://t.me/cafesnap_support_bot" target="_blank" rel="noopener" style="color:#3b4cca;font-weight:700;text-decoration:none;">Chat with us on Telegram</a></p>
+    </div>
+
+    <script>
+        // i18n strings from server (see translations.py)
+        const T = {"footer.chat_telegram": "Chat with us on Telegram", "index.js.afternoon": "Afternoon/dinner", "index.js.already_booked": "You already have a booking for this date. Book again?", "index.js.closed": "Closed", "index.js.err_email": "Please enter a valid email address", "index.js.err_location": "Please select a location", "index.js.err_name": "Please enter your name", "index.js.err_name_chars": "Name can only contain letters, spaces, hyphens and apostrophes (no numbers or symbols).", "index.js.err_name_long": "Name must be under 50 characters", "index.js.err_name_real": "Please enter your real name. You\u0027ll need to give this name at the cafe entrance.", "index.js.generic_error": "Something went wrong. Please try again.", "index.js.lunch": "Lunch", "index.js.max_dates": "You can pick up to 3 dates. Remove one to swap.", "index.js.no_checkout": "No checkout URL received", "index.js.osaka_closed": "Cafe closed for menu update (June 8-16)", "index.js.redirecting": "Redirecting to payment...", "index.js.renovation": "Renovation", "index.js.today": "Today", "index.js.tokyo_reopens": "Tokyo cafe reopens June 17, 2026", "index.price_bar.flat_fee": "flat fee", "index.s4.pay_button": "Pay {price} - Catch it!", "index.s4.tier_standard": "Standard", "index.step_indicator": "Step {n} of 4", "index.summary.date": "Date", "index.summary.dates": "Dates", "index.summary.email": "Email", "index.summary.first_attempt": "First booking attempt", "index.summary.flat": "flat", "index.summary.guests": "Guests", "index.summary.location": "Location", "index.summary.name": "Name", "index.summary.osaka_label": "Osaka (Shinsaibashi)", "index.summary.pref_after14": "After 14:00 (afternoon/dinner)", "index.summary.pref_anytime": "Any time (best chance)", "index.summary.pref_before14": "Before 14:00 (lunch)", "index.summary.scanning_blurb": "Our bot is scanning for available slots every few minutes. As soon as one opens up, we grab it and send you a confirmation email. We keep trying right up to your date. If we can\u0027t get it, full automatic refund.", "index.summary.searching_now": "actively scanning for slots now", "index.summary.status_label": "Status", "index.summary.tier": "Tier", "index.summary.tier_priority_long": "Priority (queue first)", "index.summary.time_pref": "Time preference", "index.summary.tokyo_label": "Tokyo (Nihonbashi)", "index.summary.total": "Total", "index.summary.wave_blurb": "That\u0027s when the cafe drops your date. If we win the wave: confirmation email within ~5 min. If sold out: we keep scanning every few minutes for cancellation slots. If we still can\u0027t book it, full automatic refund.", "index.trust.flat_fee": "flat fee", "status.find_btn": "Find my bookings", "status.js.cancel_confirmed_btn": "Cancel confirmed booking (non-refundable)", "status.js.cancel_msg_both": "Booking cancelled and your seat released. We have also cancelled your reservation at the Pokemon Cafe for you. A confirmed booking is non-refundable under our terms, so no refund was issued.", "status.js.cancel_msg_partial": "Booking cancelled and your seat released. We could not automatically cancel your Pokemon Cafe reservation, so please message us on Telegram so we can cancel it at the cafe manually for you. A confirmed booking is non-refundable under our terms, so no refund was issued.", "status.js.cancel_msg_simple": "Your booking is cancelled. Your refund (minus a small processing fee) will appear in 5-10 business days.", "status.js.cancel_searching_btn": "Cancel booking (processing fee applies)", "status.js.col_booked": "Booked", "status.js.col_date": "Date", "status.js.col_dates": "Dates", "status.js.col_guests": "Guests", "status.js.complete_payment": "Complete payment", "status.js.confirm_cancel": "Are you sure? A small processing fee will be deducted from your refund.", "status.js.confirm_cancel_confirmed": "This releases your seat and we cancel it at the Pokemon Cafe for you. A confirmed booking is non-refundable under our terms, so there will be NO refund.\n\nAre you sure?", "status.js.confirm_remove": "Remove this unpaid booking?", "status.js.confirmed_at": "Confirmed at", "status.js.error_generic": "Something went wrong. Please try again.", "status.js.help_blurb": "Our bot scans for availability every 2-3 minutes. New slots open at 6pm JST daily, and cancellations appear throughout the day (especially 9-11pm JST). This page auto-refreshes every 30 seconds.", "status.js.help_heading": "How it works:", "status.js.incorrect_code": "Incorrect code. Try again.", "status.js.lbl_confirmed": "Confirmed!", "status.js.lbl_failed": "Could not book", "status.js.lbl_payment_pending": "Payment pending", "status.js.lbl_refunded": "Refunded", "status.js.lbl_scanning": "Actively checking for cancellations", "status.js.lbl_searching": "Scanning for your slot", "status.js.lbl_waiting": "Waiting for cafe to release date", "status.js.loading": "Loading...", "status.js.more_suffix": "more", "status.js.no_bookings": "No bookings found for this email.", "status.js.official_resv": "Your official Pokemon Cafe reservation", "status.js.payment_not_completed": "Payment not completed", "status.js.remove": "Remove", "status.js.reservation_code": "Reservation ID", "status.js.rid_warn_body": "Your reservation is confirmed and secured. Under our terms a secured booking is non-refundable, you will not receive a refund for it. Do not cancel it yourself on the Pokemon Cafe site: if you do you will lose the seat and you will still get no refund. If your plans change, contact us first.", "status.js.rid_warn_title": "This booking is final and non-refundable.", "status.js.scanning_card": "Your date has opened and is currently full. Our bot is checking continuously for a cancellation and will email you the instant it catches one, or refund you in full automatically if your dates pass.", "status.js.searching_queue_pre": "in queue for this date.", "status.js.searching_tail": "We\u0027ll email you as soon as we secure your table", "status.js.sending": "Sending code...", "status.js.show_at_cafe": "Give your name at the entrance. We handle the rest.", "status.js.too_many": "Too many attempts. Please wait a minute.", "status.js.verify_expired": "Verification expired. Please start over.", "status.js.verifying": "Verifying...", "status.js.view_cafe": "View it on the Pokemon Cafe site", "status.js.waiting_card": "Your date has not opened at the cafe yet. Our bot fires the instant it opens and then keeps watching for cancellations. We will email you the moment we secure your table, or refund you in full automatically if we cannot.", "status.need_help": "Need help?", "status.verify_btn": "Verify"};
+        const tt = (k, fb) => (T && T[k]) ? T[k] : (fb || k);
+        const LANG = "en";
+        let verifiedEmail = '';
+
+        // Step 1: Send verification code
+        async function sendCode() {
+            const email = document.getElementById('email').value.trim();
+            if (!email) return;
+
+            const btn = document.getElementById('btn-send');
+            const err = document.getElementById('send-error');
+            err.style.display = 'none';
+            btn.textContent = tt('status.js.sending', 'Sending code...');
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('/api/send-verification', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email }),
+                });
+
+                if (res.status === 429) {
+                    err.textContent = tt('status.js.too_many', 'Too many attempts. Please wait a minute.');
+                    err.style.display = 'block';
+                    btn.textContent = tt('status.find_btn', 'Find my bookings');
+                    btn.disabled = false;
+                    return;
+                }
+
+                if (!res.ok) throw new Error('Server error');
+
+                verifiedEmail = email;
+                document.getElementById('verify-email-display').textContent = email;
+                document.getElementById('step-email').style.display = 'none';
+                document.getElementById('step-verify').style.display = 'block';
+                document.getElementById('verify-code').focus();
+            } catch (e) {
+                err.textContent = tt('status.js.error_generic', 'Something went wrong. Please try again.');
+                err.style.display = 'block';
+            }
+            btn.textContent = tt('status.find_btn', 'Find my bookings');
+            btn.disabled = false;
+        }
+
+        // Step 2: Verify code
+        async function verifyCode() {
+            // Strip non-digit chars before submit so a stray paste or
+            // accidental typo doesn't burn one of the 5 allowed attempts.
+            const code = document.getElementById('verify-code').value.replace(/\D/g,'').trim();
+            if (!code || code.length !== 6) return;
+
+            const btn = document.getElementById('btn-verify');
+            const err = document.getElementById('verify-error');
+            err.style.display = 'none';
+            btn.textContent = tt('status.js.verifying', 'Verifying...');
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('/api/verify-code', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: verifiedEmail, code }),
+                });
+
+                if (res.status === 429) {
+                    err.textContent = tt('status.js.too_many', 'Too many attempts. Please wait a minute.');
+                    err.style.display = 'block';
+                    btn.textContent = tt('status.verify_btn', 'Verify');
+                    btn.disabled = false;
+                    return;
+                }
+
+                const data = await res.json();
+                if (!res.ok) {
+                    err.textContent = data.detail || tt('status.js.incorrect_code', 'Incorrect code. Try again.');
+                    err.style.display = 'block';
+                    btn.textContent = tt('status.verify_btn', 'Verify');
+                    btn.disabled = false;
+                    return;
+                }
+
+                // Success - show bookings
+                document.getElementById('step-verify').style.display = 'none';
+                document.getElementById('step-results').style.display = 'block';
+                loadBookings();
+            } catch (e) {
+                err.textContent = tt('status.js.error_generic', 'Something went wrong. Please try again.');
+                err.style.display = 'block';
+            }
+            btn.textContent = tt('status.verify_btn', 'Verify');
+            btn.disabled = false;
+        }
+
+        function goBackToEmail() {
+            document.getElementById('step-verify').style.display = 'none';
+            document.getElementById('step-email').style.display = 'block';
+            document.getElementById('verify-code').value = '';
+        }
+
+        // Step 3: Load bookings (after verification)
+        async function loadBookings() {
+            const container = document.getElementById('results');
+            container.innerHTML = `<div class="no-results">${tt('status.js.loading','Loading...')}</div>`;
+
+            try {
+                const res = await fetch('/api/check-booking', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: verifiedEmail }),
+                });
+
+                if (res.status === 403) {
+                    container.innerHTML = `<div class="no-results">${tt('status.js.verify_expired','Verification expired. Please start over.')}</div>`;
+                    return;
+                }
+                if (!res.ok) throw new Error('Server error');
+
+                const bookings = await res.json();
+
+                if (!bookings.length) {
+                    container.innerHTML = `<div class="no-results">${tt('status.js.no_bookings','No bookings found for this email.')}</div>`;
+                    return;
+                }
+
+                const statusLabels = {
+                    pending: tt('status.js.lbl_payment_pending','Payment pending'),
+                    searching: tt('status.js.lbl_searching','Searching for slot'),
+                    waiting_for_release: tt('status.js.lbl_waiting','Waiting for cafe to release date'),
+                    scanning_cancellations: tt('status.js.lbl_scanning','Actively checking for cancellations'),
+                    booked: tt('status.js.lbl_confirmed','Confirmed!'),
+                    failed: tt('status.js.lbl_failed','Could not book'),
+                    refunded: tt('status.js.lbl_refunded','Refunded'),
+                    cancelled: tt('status.js.lbl_cancelled','Cancelled'),
+                    disputed: tt('status.js.lbl_disputed','Payment disputed'),
+                };
+
+                const dateLocale = LANG === 'es' ? 'es-ES' : 'en-GB';
+                const esc = s => s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : '';
+                container.innerHTML = bookings.map(b => {
+                    // 2026-05-18 founder-approved DELIBERATE reversal of the
+                    // old blanket no-RID rule: the cafe reservation ID + its
+                    // public page are shown below ONLY when the server set
+                    // b.cafe_reservation_url, which /api/check-booking
+                    // (app.py) does ONLY for a genuinely SECURED booking
+                    // (status == 'booked' AND is_secured_booking). This page
+                    // never derives the URL itself, so an unsecured row can
+                    // never leak it here.
+                    // For a confirmed booking show the date the cafe ACTUALLY
+                    // gave us (booked_date), which is what the customer's
+                    // confirmation email + PDF show. Multi-date customers can
+                    // win an alternate date; showing their original first
+                    // choice here would contradict their email and risk them
+                    // arriving on the wrong day.
+                    const dispDate = (b.status === 'booked' && b.booked_date) ? b.booked_date : b.date;
+                    const date = new Date(dispDate + 'T00:00:00');
+                    const formatted = date.toLocaleDateString(dateLocale, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+
+                    return `
+                        <div class="booking-card">
+                            <div class="top">
+                                <span class="location">${b.location === 'tokyo' ? 'Tokyo' : 'Osaka'}</span>
+                                <span class="status-badge status-${b.status}">${statusLabels[b.status] || b.status}</span>
+                            </div>
+                            <div class="details">
+                                <span class="detail-label">${b.alternative_dates ? tt('status.js.col_dates','Dates') : tt('status.js.col_date','Date')}</span>
+                                <span class="detail-value">${formatted}${b.alternative_dates ? ` + ${b.alternative_dates.split(',').length} ${tt('status.js.more_suffix','more')}` : ''}</span>
+                                <span class="detail-label">${tt('status.js.col_guests','Guests')}</span>
+                                <span class="detail-value">${b.party_size}</span>
+                                <span class="detail-label">${tt('status.js.col_booked','Booked')}</span>
+                                <span class="detail-value">${new Date(b.created_at).toLocaleDateString(dateLocale)}</span>
+                            </div>
+                            ${b.status === 'booked' && b.booked_time ? `<div class="time-confirmed">${tt('status.js.confirmed_at','Confirmed at')} ${esc(b.booked_time)}</div>` : ''}
+                            ${b.status === 'booked' ? `
+                                <div style="margin-top:8px;padding:10px;background:#e8f5e9;border-radius:10px;text-align:center;font-size:0.8rem;color:#2e7d32;font-weight:700;">${tt('status.js.show_at_cafe','Give your name at the entrance. We handle the rest.')}</div>
+                                ${b.cafe_reservation_url ? `
+                                <div style="margin-top:10px;padding:14px;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:10px;">
+                                    <div style="font-size:0.74rem;color:#2e7d32;font-weight:800;margin-bottom:4px;">${tt('status.js.official_resv','Your official Pokemon Cafe reservation')}</div>
+                                    <div style="font-size:0.72rem;color:#888;margin-bottom:2px;">${tt('status.js.reservation_code','Reservation ID')}</div>
+                                    <div style="font-size:0.9rem;color:#1a1b3a;font-weight:800;font-family:monospace;word-break:break-all;margin-bottom:8px;">${esc(b.cafe_reservation_id)}</div>
+                                    <a href="${esc(b.cafe_reservation_url)}" target="_blank" rel="noopener" style="display:inline-block;width:100%;box-sizing:border-box;text-align:center;padding:9px;background:#2e7d32;color:#fff;border-radius:9px;text-decoration:none;font-size:0.78rem;font-weight:700;">${tt('status.js.view_cafe','View it on the Pokemon Cafe site')}</a>
+                                </div>
+                                <div style="margin-top:10px;padding:14px;background:#ffebee;border:2px solid #ef9a9a;border-radius:10px;">
+                                    <div style="font-size:0.78rem;color:#b71c1c;font-weight:800;margin-bottom:6px;">${tt('status.js.rid_warn_title','This booking is final and non-refundable.')}</div>
+                                    <div style="font-size:0.74rem;color:#7f1d1d;line-height:1.6;">${tt('status.js.rid_warn_body','Your reservation is confirmed and secured. Under our terms a secured booking is non-refundable, you will not receive a refund for it. Do not cancel it yourself on the Pokemon Cafe site: if you do you will lose the seat and you will still get no refund. If your plans change, contact us first.')}</div>
+                                </div>
+                                ` : ''}
+                                <button onclick="cancelBooking(${b.id}, true)" style="margin-top:10px;width:100%;padding:10px;background:white;border:2px solid #e0e0e0;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#888;cursor:pointer;">${tt('status.js.cancel_confirmed_btn','Cancel confirmed booking (non-refundable)')}</button>
+                            ` : ''}
+                            ${b.status === 'pending' ? `
+                                <div style="margin-top:8px;padding:10px;background:#fffbea;border-radius:10px;text-align:center;font-size:0.8rem;color:#8a6d00;font-weight:700;">${tt('status.js.payment_not_completed','Payment not completed')}</div>
+                                <div style="display:flex;gap:8px;margin-top:10px;">
+                                    <button onclick="retryPayment(${b.id})" style="flex:1;padding:10px;background:#ffcb05;border:none;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#1a1b3a;cursor:pointer;">${tt('status.js.complete_payment','Complete payment')}</button>
+                                    <button onclick="removePending(${b.id})" style="flex:1;padding:10px;background:white;border:2px solid #e0e0e0;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#888;cursor:pointer;">${tt('status.js.remove','Remove')}</button>
+                                </div>
+                            ` : ''}
+                            ${b.status === 'searching' ? `
+                                <div style="margin-top:8px;padding:10px;background:#e3f2fd;border-radius:10px;text-align:center;font-size:0.8rem;color:#1565c0;font-weight:700;">
+                                    ${b.queue_position ? `#${b.queue_position} ${tt('status.js.searching_queue_pre','in queue for this date.')} ` : ''}${tt('status.js.searching_tail',"We'll email you as soon as we secure your table")}
+                                </div>
+                                <button onclick="cancelBooking(${b.id})" style="margin-top:10px;width:100%;padding:10px;background:white;border:2px solid #e0e0e0;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#888;cursor:pointer;">${tt('status.js.cancel_searching_btn','Cancel booking (processing fee applies)')}</button>
+                            ` : ''}
+                            ${b.status === 'waiting_for_release' ? `
+                                <div style="margin-top:8px;padding:10px;background:#fffbea;border-radius:10px;text-align:center;font-size:0.8rem;color:#8a6d00;font-weight:700;">${tt('status.js.waiting_card','Your date opens at the cafe on the 17 May release. Our bot fires the instant it opens. We will email you the moment we secure your table, or refund you in full automatically if we cannot.')}</div>
+                                <button onclick="cancelBooking(${b.id})" style="margin-top:10px;width:100%;padding:10px;background:white;border:2px solid #e0e0e0;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#888;cursor:pointer;">${tt('status.js.cancel_searching_btn','Cancel booking (processing fee applies)')}</button>
+                            ` : ''}
+                            ${b.status === 'scanning_cancellations' ? `
+                                <div style="margin-top:8px;padding:10px;background:#e3f2fd;border-radius:10px;text-align:center;font-size:0.8rem;color:#1565c0;font-weight:700;">${tt('status.js.scanning_card','Your date has opened and is currently full. Our bot is checking continuously for a cancellation and will email you the instant it catches one, or refund you in full automatically if your dates pass.')}</div>
+                                <button onclick="cancelBooking(${b.id})" style="margin-top:10px;width:100%;padding:10px;background:white;border:2px solid #e0e0e0;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#888;cursor:pointer;">${tt('status.js.cancel_searching_btn','Cancel booking (processing fee applies)')}</button>
+                            ` : ''}
+                        </div>
+                    `;
+                }).join('');
+                addHelpSection();
+            } catch (err) {
+                container.innerHTML = `<div class="no-results">${tt('status.js.error_generic','Something went wrong. Please try again.')}</div>`;
+            }
+        }
+
+        async function retryPayment(bookingId) {
+            try {
+                const res = await fetch('/api/retry-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ booking_id: bookingId, email: verifiedEmail }),
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    window.location.href = data.checkout_url;
+                } else {
+                    const data = await res.json();
+                    alert(data.detail || tt('status.js.error_generic','Something went wrong. Please try again.'));
+                }
+            } catch (err) {
+                alert(tt('status.js.error_generic','Something went wrong. Please try again.'));
+            }
+        }
+
+        async function removePending(bookingId) {
+            if (!confirm(tt('status.js.confirm_remove','Remove this unpaid booking?'))) return;
+            try {
+                const res = await fetch('/api/remove-pending', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ booking_id: bookingId, email: verifiedEmail }),
+                });
+                if (res.ok) {
+                    loadBookings();
+                } else {
+                    const data = await res.json();
+                    alert(data.detail || tt('status.js.error_generic','Something went wrong. Please try again.'));
+                }
+            } catch (err) {
+                alert(tt('status.js.error_generic','Something went wrong. Please try again.'));
+            }
+        }
+
+        async function cancelBooking(bookingId, isConfirmed = false) {
+            const msg = isConfirmed
+                ? tt('status.js.confirm_cancel_confirmed','This releases your seat and we cancel it at the Pokemon Cafe for you. A confirmed booking is non-refundable under our terms, so there will be NO refund.\n\nAre you sure?')
+                : tt('status.js.confirm_cancel','Are you sure? A small processing fee will be deducted from your refund.');
+            if (!confirm(msg)) return;
+            try {
+                const res = await fetch('/api/cancel-booking', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ booking_id: bookingId, email: verifiedEmail }),
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    let alertMsg;
+                    if (data.was_booked && data.cafe_cancelled) {
+                        alertMsg = tt('status.js.cancel_msg_both', "Booking cancelled and your seat released. We have also cancelled your reservation at the Pokemon Cafe for you. A confirmed booking is non-refundable under our terms, so no refund was issued.");
+                    } else if (data.was_booked) {
+                        alertMsg = tt('status.js.cancel_msg_partial', "Booking cancelled and your seat released. We could not automatically cancel your Pokemon Cafe reservation, so please message us on Telegram so we can cancel it at the cafe manually for you. A confirmed booking is non-refundable under our terms, so no refund was issued.");
+                    } else {
+                        alertMsg = tt('status.js.cancel_msg_simple', "Your booking is cancelled. Your refund (minus a small processing fee) will appear in 5-10 business days.");
+                    }
+                    alert(alertMsg);
+                    loadBookings();
+                } else {
+                    alert(data.detail || tt('status.js.error_generic','Something went wrong. Please try again.'));
+                }
+            } catch (err) {
+                alert(tt('status.js.error_generic','Something went wrong. Please try again.'));
+            }
+        }
+
+        // Add helpful info after bookings load
+        function addHelpSection() {
+            const container = document.getElementById('results');
+            if (container && !document.getElementById('help-section')) {
+                const help = document.createElement('div');
+                help.id = 'help-section';
+                help.style.cssText = 'margin-top:20px;padding:16px;background:#f0f4ff;border-radius:12px;font-size:0.8rem;color:#555;line-height:1.6;';
+                help.innerHTML = `<strong style="color:#1a1b3a;">${tt('status.js.help_heading','How it works:')}</strong><br>${tt('status.js.help_blurb','Our bot scans for availability every 2-3 minutes. New slots open at 6pm JST daily, and cancellations appear throughout the day (especially 9-11pm JST). This page auto-refreshes every 30 seconds.')}<br><br>${tt('status.need_help','Need help?')} <a href="https://t.me/cafesnap_support_bot" style="color:#3b4cca;font-weight:700;">${tt('footer.chat_telegram','Chat with us on Telegram')}</a>`;
+                container.parentNode.insertBefore(help, container.nextSibling);
+            }
+        }
+
+        // Auto-refresh bookings every 30 seconds when viewing results
+        setInterval(() => {
+            if (document.getElementById('step-results').style.display !== 'none' && !document.hidden) {
+                loadBookings();
+            }
+        }, 30000);
+
+        // Allow Enter key on both inputs
+        document.getElementById('email').addEventListener('keypress', e => {
+            if (e.key === 'Enter') sendCode();
+        });
+        document.getElementById('verify-code').addEventListener('keypress', e => {
+            if (e.key === 'Enter') verifyCode();
+        });
+    </script>
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1b3a;color:#fff;padding:14px 20px;z-index:9999;font-size:0.85rem;line-height:1.5;box-shadow:0 -2px 12px rgba(0,0,0,0.15);">
+    <div style="max-width:600px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <p style="margin:0;flex:1;min-width:200px;">We use cookies for analytics and to improve your experience. <a href="/cafesnap-preview/terms.html" style="color:#ffcb05;text-decoration:underline;">Learn more</a></p>
+        <div style="display:flex;gap:8px;">
+            <button onclick="localStorage.setItem('cafesnap_consent','granted');gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});this.closest('#cookie-banner').style.display='none'" style="background:#ffcb05;color:#1a1b3a;border:none;padding:10px 20px;border-radius:8px;font-weight:800;font-size:0.85rem;cursor:pointer;min-height:44px;">Accept</button>
+            <button onclick="localStorage.setItem('cafesnap_consent','denied');this.closest('#cookie-banner').style.display='none'" style="background:transparent;color:#aaa;border:1px solid #555;padding:10px 16px;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;min-height:44px;">Decline</button>
+        </div>
+    </div>
+</div>
+<script>if(!localStorage.getItem('cafesnap_consent'))document.getElementById('cookie-banner').style.display='block';</script>
+</body>
+</html>

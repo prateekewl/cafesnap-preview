@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#ffcb05"/>
+  <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="900" font-size="38" letter-spacing="-2">
+    <tspan fill="#1a1b3a">C</tspan><tspan fill="#e3350d">S</tspan>
+  </text>
+</svg>

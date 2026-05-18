@@ -1,0 +1,3243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.gtag=function(){};window.dataLayer=window.dataLayer||[];</script>
+    <!-- Google Consent Mode v2: deny by default, update on user accept -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
+    if(localStorage.getItem('cafesnap_consent')==='granted'){
+        gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
+    }
+    </script>
+    <!-- Google Analytics (loads after consent defaults are set) -->
+    <script async src="about:blank" data-preview-disabled-analytics="1"></script>
+    <script>gtag('js',new Date());gtag('config','G-B1H9YKBDTN');</script>
+    
+    
+    <meta charset="UTF-8">
+    
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffcb05">
+    <title>CafeSnap - Pokemon Cafe Bot for Osaka &amp; Tokyo Reservations</title>
+    <link rel="icon" type="image/svg+xml" href="/cafesnap-preview/static/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/cafesnap-preview/static/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/cafesnap-preview/static/apple-touch-icon.png">
+    <meta name="description" content="Pokemon Cafe sold out and can&#39;t get a reservation? CafeSnap is a Pokemon Cafe booking bot and reservation service that secures your Osaka or Tokyo table for a flat fee. Full refund if we can&#39;t book. Tokyo reopens June 17, 2026.">
+    <link rel="canonical" href="https://cafesnapbot.com/">
+    <link rel="alternate" hreflang="en" href="https://cafesnapbot.com/">
+    <link rel="alternate" hreflang="es" href="https://cafesnapbot.com/?lang=es">
+    <link rel="alternate" hreflang="x-default" href="https://cafesnapbot.com/">
+    <!-- Open Graph -->
+    <meta property="og:title" content="CafeSnap - Pokemon Cafe Bot for Osaka &amp; Tokyo Reservations">
+    <meta property="og:description" content="A Pokemon Cafe booking bot and reservation service for the Osaka and Tokyo cafe. Flat fee, full refund if we can&#39;t book. Tokyo reopens June 17, 2026.">
+    <meta property="og:url" content="https://cafesnapbot.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CafeSnap - Pokemon Cafe Bot">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:image" content="https://cafesnapbot.com/static/og-pokemon-cafe.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="CafeSnap - Pokemon Cafe reservations">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CafeSnap - Pokemon Cafe Bot for Osaka &amp; Tokyo Reservations">
+    <meta name="twitter:description" content="A Pokemon Cafe booking bot and reservation service for the Osaka and Tokyo cafe. Flat fee, full refund if we can&#39;t book. Tokyo reopens June 17, 2026.">
+    <meta name="twitter:image" content="https://cafesnapbot.com/static/og-pokemon-cafe.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://js.stripe.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "CafeSnap",
+        "description": "A Pokemon Cafe booking bot and automated reservation service for the Pokemon Cafe in Osaka and Tokyo, Japan. If the cafe is sold out and you can't get a reservation, we secure your table for a flat fee with a full refund guarantee.",
+        "url": "https://cafesnapbot.com",
+        "provider": {
+            "@type": "Organization",
+            "name": "CafeSnap",
+            "url": "https://cafesnapbot.com",
+            "logo": "https://cafesnapbot.com/static/og-pokemon-cafe.jpg",
+            "sameAs": ["https://t.me/cafesnap_support_bot"]
+        },
+        "areaServed": [
+            {"@type": "City", "name": "Osaka", "addressCountry": "JP"},
+            {"@type": "City", "name": "Tokyo", "addressCountry": "JP"}
+        ],
+        "serviceType": "Reservation Assistance",
+        "offers": {
+            "@type": "Offer",
+            "price": "10.00",
+            "priceCurrency": "GBP",
+            "description": "Flat fee for Pokemon Cafe reservation assistance"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CafeSnap - Pokemon Cafe Bot",
+        "alternateName": "Pokemon Cafe Bot",
+        "url": "https://cafesnapbot.com/",
+        "inLanguage": ["en", "es"],
+        "description": "Independent automated booking service for the Osaka and Tokyo Pokemon Cafe. Flat fee, full refund if we cannot book.",
+        "publisher": {"@type": "Organization", "name": "CafeSnap", "logo": {"@type": "ImageObject", "url": "https://cafesnapbot.com/static/og-pokemon-cafe.jpg"}}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "Is this affiliated with Pokemon Cafe?", "acceptedAnswer": {"@type": "Answer", "text": "No. CafeSnap is an independent reservation service. We are not affiliated with The Pokemon Company, Nintendo, or Pokemon Cafe. The cafe's own booking site is free. You pay us to do the booking on your behalf because slots sell out in seconds."}},
+            {"@type": "Question", "name": "What happens if you can't get the booking?", "acceptedAnswer": {"@type": "Answer", "text": "Full automatic refund. We issue the refund the day after the last of your preferred dates passes without us booking it. You don't have to ask. It hits your bank in 5 to 10 business days depending on your card."}},
+            {"@type": "Question", "name": "Is this legal?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We book on your behalf using the name you give us, the same way a hotel concierge or travel agent would. The reservation is in your name. We send you a confirmation with everything you need to walk in and be seated."}},
+            {"@type": "Question", "name": "What if the cafe cancels my booking after we get it?", "acceptedAnswer": {"@type": "Answer", "text": "If the cafe cancels for its own reasons, that sits with their own refund policy. Our fee covers securing the reservation, not the cafe's own decisions afterwards. Cases like this are very rare and we will help you contact the cafe."}},
+            {"@type": "Question", "name": "Do you charge per person?", "acceptedAnswer": {"@type": "Answer", "text": "No. One flat fee covers your whole party (1-6 guests at both cafes). A family of 4 pays the same as a solo visitor."}},
+            {"@type": "Question", "name": "Can I cancel?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, until 10pm JST the night before your reservation date, which is the cafe's own cancellation deadline. A small processing fee applies (10%, minimum £1.50) to cover Stripe's costs."}},
+            {"@type": "Question", "name": "Why is your fee higher than some other services?", "acceptedAnswer": {"@type": "Answer", "text": "You can see exactly who we are, contact us on Telegram, and read our refund terms before paying. If we don't get your booking, you get a full refund automatically. No hidden per-person charges or surprise fees at checkout."}},
+            {"@type": "Question", "name": "How does the bot work?", "acceptedAnswer": {"@type": "Answer", "text": "Two ways. An automated wave at 6pm JST every day when the cafe releases slots 31 days ahead. Plus a continuous scanner that watches for cancellations all day and grabs them the moment they appear."}},
+            {"@type": "Question", "name": "Why do you need my email?", "acceptedAnswer": {"@type": "Answer", "text": "So we can send you your booking confirmation, including the date, time, and guest name to show at the door. We handle everything with the cafe on our side. You just turn up."}},
+            {"@type": "Question", "name": "Is my payment secure?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Payment goes through Stripe Checkout. We never see, store, or touch your card details. Stripe is fully PCI compliant."}},
+            {"@type": "Question", "name": "Is there a bot for the Pokemon Cafe?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. CafeSnap is a Pokemon Cafe booking bot and reservation service. When the cafe releases seats at 6pm JST and they sell out in seconds, our bot submits faster than a person can click, and a continuous scanner keeps watching for cancellations after that. You give us your dates once and we do the booking on your behalf for one flat fee."}},
+            {"@type": "Question", "name": "Can a service book the Pokemon Cafe for me if it is sold out?", "acceptedAnswer": {"@type": "Answer", "text": "That is exactly what we do. The Pokemon Cafe in Osaka and Tokyo is often sold out within seconds of release, so most people who can't get a reservation either gave up or missed the 6pm JST window. We book it for you: our system tries your preferred dates at release and keeps chasing cancellation seats right up to your date. If we can't get any of your dates, you get a full automatic refund."}}
+        ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --poke-yellow: #ffcb05;
+            --poke-yellow-light: #fff3b0;
+            --poke-yellow-bg: #fffbea;
+            --poke-red: #e3350d;
+            --poke-red-light: #ff6b4a;
+            --poke-blue: #3b4cca;
+            --poke-blue-light: #6b7cff;
+            --poke-navy: #1a1b3a;
+            --poke-green: #4caf50;
+            --poke-green-light: #c8e6c9;
+            --poke-orange: #ff9800;
+            --poke-orange-light: #ffe0b2;
+            --poke-grey: #f5f5f5;
+            --poke-dark: #333;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 24px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #fff8f0;
+            color: var(--poke-dark);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Subtle star sparkle background */
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(circle, rgba(255,203,5,0.15) 1px, transparent 1px),
+                radial-gradient(circle, rgba(227,53,13,0.08) 1px, transparent 1px);
+            background-size: 40px 40px, 90px 90px;
+            background-position: 0 0, 20px 20px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Floating sparkle stars */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.15; }
+            50% { transform: translateY(-18px) scale(1.2); opacity: 0.25; }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.12; }
+            50% { transform: translateY(-14px) rotate(20deg); opacity: 0.22; }
+        }
+        .floating-star {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            font-size: 24px;
+            opacity: 0.15;
+        }
+        .star-1 { top: 12%; left: 6%; animation: float 6s ease-in-out infinite; color: var(--poke-yellow); }
+        .star-2 { top: 30%; right: 4%; animation: float2 8s ease-in-out infinite 1s; font-size: 18px; color: var(--poke-red-light); }
+        .star-3 { top: 55%; left: 4%; animation: float 7s ease-in-out infinite 2s; font-size: 16px; color: var(--poke-blue-light); }
+        .star-4 { top: 75%; right: 8%; animation: float2 9s ease-in-out infinite 0.5s; font-size: 20px; color: var(--poke-yellow); }
+        .star-5 { top: 8%; right: 12%; animation: float 5s ease-in-out infinite 3s; font-size: 14px; color: var(--poke-orange); }
+        .star-6 { top: 20%; left: 28%; animation: float2 7s ease-in-out infinite 1.5s; font-size: 14px; color: var(--poke-red-light); }
+        .star-7 { top: 42%; right: 22%; animation: float 6s ease-in-out infinite 2.5s; font-size: 18px; color: var(--poke-blue-light); }
+        .star-8 { top: 62%; right: 14%; animation: float2 8s ease-in-out infinite 0.8s; font-size: 15px; color: var(--poke-yellow); }
+        .star-9 { top: 88%; left: 16%; animation: float 9s ease-in-out infinite 1.2s; font-size: 17px; color: var(--poke-orange); }
+        .star-10 { top: 48%; left: 48%; animation: float2 10s ease-in-out infinite 2.8s; font-size: 13px; color: var(--poke-red-light); }
+        .star-11 { top: 18%; left: 62%; animation: float 7s ease-in-out infinite 0.3s; font-size: 16px; color: var(--poke-yellow); }
+        .star-12 { top: 72%; left: 44%; animation: float2 6s ease-in-out infinite 3.2s; font-size: 14px; color: var(--poke-blue-light); }
+
+        /* ---- HEADER ---- */
+        .header {
+            background: var(--poke-yellow);
+            padding: 18px 20px 14px;
+            /* 2026-05-13 UX audit U4: lock min-height so nav between
+               pages (with/without tagline) does not produce a height
+               jump. 92px = roughly 1.6rem h1 + 4px gap + 0.9rem tagline
+               + padding. */
+            min-height: 92px;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            border-radius: 0 0 28px 28px;
+            box-shadow: 0 4px 20px rgba(255,203,5,0.3);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 6px, transparent 6px);
+            background-size: 32px 32px;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--poke-red), var(--poke-yellow), var(--poke-blue));
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+            letter-spacing: -0.5px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .header h1 span { color: var(--poke-red); }
+
+        .header p {
+            font-size: 0.9rem;
+            color: rgba(26,27,58,0.6);
+            font-weight: 700;
+            margin-top: 4px;
+            position: relative;
+        }
+
+        /* ---- TRUST BAR ---- */
+        .trust-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 16px 16px 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #444;
+        }
+
+        .trust-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .trust-icon-yellow { background: #fff3b0; }
+        .trust-icon-green  { background: #c8e6c9; }
+        .trust-icon-blue   { background: #bbdefb; }
+
+        /* ---- URGENCY CHIP ---- */
+        .urgency-chip {
+            display: flex;
+            justify-content: center;
+            padding: 8px 16px 18px;
+            position: relative;
+            z-index: 1;
+        }
+        .urgency-chip-inner {
+            background: linear-gradient(135deg, #fff8e1, #ffe0b2);
+            border: 1.5px solid rgba(255,152,0,0.35);
+            border-radius: 25px;
+            padding: 7px 18px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #7a4200;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        /* ---- HERO DESCRIPTION ---- */
+        .hero-desc {
+            max-width: 600px;
+            margin: 20px auto 0;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-desc-inner {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            border: 2px solid rgba(255,203,5,0.15);
+        }
+
+        .hero-img {
+            width: 200px;
+            min-width: 200px;
+            min-height: 180px;
+            overflow: hidden;
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fff3b0, #ffe0b2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .hero-text {
+            padding: 20px 24px;
+            flex: 1;
+        }
+
+        .hero-text h2 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .hero-text p {
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .hero-text p strong {
+            color: var(--poke-red);
+        }
+
+        @media (max-width: 480px) {
+            .hero-desc-inner {
+                flex-direction: column;
+            }
+            .hero-img {
+                width: 100%;
+                min-width: auto;
+                min-height: 140px;
+            }
+        }
+
+        /* ---- STEPPER ---- */
+        .stepper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0;
+            padding: 24px 20px 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .step-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .step-circle.active {
+            background: var(--poke-blue);
+            color: white;
+            box-shadow: 0 2px 8px rgba(59,76,202,0.3);
+        }
+
+        .step-circle.completed {
+            background: var(--poke-green);
+            color: white;
+        }
+
+        .step-circle.inactive {
+            background: #ddd;
+            color: #999;
+        }
+
+        .step-circle.completed {
+            cursor: pointer;
+        }
+
+        .step-circle.completed:hover {
+            box-shadow: 0 2px 8px rgba(76,175,80,0.4);
+            transform: scale(1.1);
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--poke-navy);
+        }
+
+        .step-line {
+            width: 40px;
+            height: 3px;
+            background: #ddd;
+            margin: 0 8px;
+            margin-top: 16px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .step-line.completed { background: var(--poke-green); }
+
+        /* ---- MAIN CONTAINER ---- */
+        .container {
+            max-width: 600px;
+            margin: 16px auto 40px;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 4px 24px rgba(255,203,5,0.15);
+            margin-bottom: 20px;
+            border: 2px solid rgba(255,203,5,0.3);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        /* ---- STEP PANELS ---- */
+        .step-panel { display: none; }
+        .step-panel.active { display: block; }
+
+        /* ---- LOCATION CARDS ---- */
+        .location-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .location-card {
+            border: 2px solid #e8e8e8;
+            border-radius: 14px;
+            padding: 20px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .location-card:hover {
+            border-color: var(--poke-yellow);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .location-card.selected {
+            border-color: var(--poke-blue);
+            background: rgba(59,76,202,0.04);
+            box-shadow: 0 0 0 3px rgba(59,76,202,0.1);
+        }
+
+        .location-card .city {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+        }
+
+        .location-card .area {
+            font-size: 0.78rem;
+            /* 2026-05-12 UX audit U6: was #999 (2.5:1 contrast). #5a5160 = 6.5:1 AA. */
+            color: #5a5160;
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        .location-card .address {
+            font-size: 0.74rem;
+            /* 2026-05-12 UX audit U6: was #aaa (~2.3:1). #4a5160 = 7:1 AA. */
+            color: #4a5160;
+            margin-top: 4px;
+            line-height: 1.45;
+        }
+
+        .location-card .status {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            /* 2026-05-12 UX audit U7: was 0.7rem font + light-green pale combo
+               under 4:1. Bumped to 0.82rem + darker text + stronger bg. */
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #1a5d2f;
+            background: #d4f0db;
+        }
+
+        .status-open {
+            background: var(--poke-green-light);
+            color: #2e7d32;
+        }
+
+        .status-closed {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+
+        /* Guest count */
+        .guest-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .guest-row label {
+            font-weight: 700;
+            color: var(--poke-navy);
+            font-size: 0.9rem;
+        }
+
+        .guest-counter {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .guest-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--poke-blue);
+            background: white;
+            color: var(--poke-blue);
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .guest-btn:hover {
+            background: var(--poke-blue);
+            color: white;
+        }
+
+        .guest-count {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+            min-width: 24px;
+            text-align: center;
+        }
+
+        /* ---- CALENDAR ---- */
+        .calendar {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .cal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--poke-yellow);
+        }
+
+        .cal-header .month-year {
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--poke-navy);
+        }
+
+        .cal-nav {
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: rgba(255,255,255,0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .cal-nav:hover { background: rgba(255,255,255,0.8); }
+
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            padding: 8px;
+        }
+
+        .cal-dow {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #999;
+            padding: 4px 0;
+        }
+
+        .cal-day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .cal-day.empty { cursor: default; }
+
+        .cal-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        .cal-day.closed-renovation {
+            color: #aaa;
+            background: repeating-linear-gradient(
+                45deg, transparent, transparent 4px,
+                rgba(255,152,0,0.08) 4px, rgba(255,152,0,0.08) 8px
+            );
+            cursor: not-allowed;
+            position: relative;
+        }
+        .cal-day.closed-renovation .closed-label {
+            display: block;
+            font-size: 0.65rem;
+            color: #c66;
+            line-height: 1;
+            margin-top: 2px;
+        }
+        .cal-day.closed-renovation .d { display: block; }
+
+        .cal-day.available {
+            color: var(--poke-navy);
+        }
+
+        .cal-day.available:hover {
+            border-color: var(--poke-blue);
+            background: rgba(59,76,202,0.05);
+        }
+
+        .cal-day.selected {
+            background: var(--poke-blue);
+            color: white;
+            border-color: var(--poke-blue);
+        }
+
+        .cal-day.selected:hover {
+            background: var(--poke-blue);
+            color: white;
+            border-color: var(--poke-blue);
+        }
+
+        .cal-day.today-marker {
+            border-color: var(--poke-orange);
+        }
+
+        .cal-day .today-label {
+            position: absolute;
+            top: 1px;
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: var(--poke-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .cal-day.selected .today-label {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Availability indicator bar under date */
+        .cal-day .avail-bar {
+            position: absolute;
+            bottom: 3px;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        .avail-high { background: var(--poke-green); }
+        .avail-med { background: var(--poke-orange); }
+        .avail-low { background: var(--poke-red); }
+
+        .cal-legend {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 8px 12px 14px;
+            font-size: 0.7rem;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .cal-legend span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .cal-legend .dot {
+            width: 16px;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        .date-mode-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .mode-btn {
+            padding: 8px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            background: white;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            color: var(--poke-navy);
+        }
+
+        .mode-btn.active {
+            background: var(--poke-yellow);
+            border-color: var(--poke-yellow);
+            color: var(--poke-navy);
+        }
+
+        .selected-dates {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            min-height: 32px;
+        }
+
+        .date-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59,76,202,0.08);
+            border: 1px solid rgba(59,76,202,0.2);
+            color: var(--poke-blue);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .date-chip .remove {
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            opacity: 0.6;
+        }
+
+        .date-chip .remove:hover { opacity: 1; }
+
+        /* ---- TIME SLOTS ---- */
+        .time-filter {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            background: white;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            color: var(--poke-navy);
+        }
+
+        .filter-btn.active {
+            background: var(--poke-yellow-light);
+            border-color: var(--poke-yellow);
+        }
+
+        .time-slots-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .time-slot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 8px;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
+            background: rgba(59,76,202,0.02);
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .time-slot:hover {
+            border-color: var(--poke-blue);
+            background: rgba(59,76,202,0.05);
+        }
+
+        .time-slot.selected {
+            border-color: var(--poke-blue);
+            background: rgba(59,76,202,0.08);
+        }
+
+        .time-slot .time-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--poke-navy);
+        }
+
+        .zone-badge {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .zone-A { background: var(--poke-blue); }
+        .zone-B { background: var(--poke-red); }
+        .zone-C { background: var(--poke-green); }
+        .zone-D { background: var(--poke-orange); }
+
+        .zone-legend {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.72rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .zone-legend span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .zone-legend .mini-badge {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        /* ---- DETAILS FORM ---- */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--poke-navy);
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Nunito', sans-serif;
+            color: var(--poke-dark);
+            transition: border-color 0.2s;
+            background: white;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--poke-blue);
+        }
+
+        /* ---- SUMMARY ---- */
+        .summary {
+            background: var(--poke-grey);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.85rem;
+        }
+
+        .summary-row .label { color: #888; font-weight: 600; }
+        .summary-row .value { color: var(--poke-navy); font-weight: 800; word-break: break-word; text-align: right; max-width: 60%; }
+
+        .summary-total {
+            border-top: 2px solid #e0e0e0;
+            margin-top: 8px;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+
+        .summary-total .label { color: var(--poke-navy); font-weight: 800; }
+        .summary-total .value { color: var(--poke-red); font-weight: 900; }
+
+        /* ---- BUTTONS ---- */
+        .btn-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-back {
+            padding: 14px 24px;
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            background: white;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: var(--poke-navy);
+            transition: all 0.15s;
+        }
+
+        .btn-back:hover { border-color: #bbb; }
+
+        .btn-next {
+            flex: 1;
+            padding: 14px;
+            background: var(--poke-yellow);
+            color: var(--poke-navy);
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255,203,5,0.4);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-pay {
+            flex: 1;
+            padding: 16px;
+            background: var(--poke-red);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .btn-pay:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(227,53,13,0.3);
+        }
+
+        .btn-pay:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-pay .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ---- PRICE BAR ---- */
+        .price-bar {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 2px solid rgba(255,203,5,0.3);
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+            z-index: 100;
+        }
+        body.on-step-4 .price-bar { display: none; }
+        body.on-step-4 { padding-bottom: 0 !important; }
+
+        .price-bar .price {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+        }
+
+        .price-bar .price small {
+            font-size: 0.75rem;
+            color: #999;
+            font-weight: 600;
+        }
+
+        .price-bar .flat-note {
+            font-size: 0.7rem;
+            color: var(--poke-green);
+            font-weight: 700;
+        }
+
+        /* ---- SEAT MAP ---- */
+        .section {
+            max-width: 600px;
+            margin: 0 auto 24px;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .seatmap-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 2px solid rgba(255,203,5,0.15);
+        }
+
+        .seatmap-header {
+            background: var(--poke-yellow);
+            padding: 10px 16px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--poke-navy);
+            text-align: center;
+        }
+
+        .seatmap-layout {
+            padding: 24px 20px 12px;
+            position: relative;
+        }
+
+        .seatmap-grid {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: stretch;
+            min-height: 160px;
+        }
+
+        .seatmap-zone {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .zone-left, .zone-right { flex: 1; }
+        .zone-center { flex: 0.8; display: flex; flex-direction: column; gap: 8px; }
+
+        .seatmap-table {
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .seatmap-counter {
+            border-radius: 10px;
+            padding: 12px 10px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .counter-text {
+            font-size: 0.6rem;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+
+        .zone-color-A { background: rgba(59,76,202,0.1); border: 2px solid rgba(59,76,202,0.25); }
+        .zone-color-B { background: rgba(227,53,13,0.08); border: 2px solid rgba(227,53,13,0.2); }
+        .zone-color-C { background: rgba(76,175,80,0.08); border: 2px solid rgba(76,175,80,0.2); }
+
+        .table-label {
+            font-weight: 900;
+            font-size: 1rem;
+            color: var(--poke-navy);
+        }
+
+        .seatmap-entrance {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #aaa;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .seatmap-entrance::before {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #ddd;
+            margin: 0 auto 6px;
+        }
+
+        .seatmap-legend {
+            padding: 14px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: #555;
+            font-weight: 600;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .seatmap-legend div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .seatmap-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .seatmap-note {
+            padding: 0 20px 16px;
+            font-size: 0.75rem;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        .seatmap-renovation {
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .seatmap-renovation h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin: 8px 0 6px;
+        }
+
+        .seatmap-renovation p {
+            font-size: 0.82rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* ---- SOCIAL PROOF ---- */
+        .social-proof {
+            max-width: 600px;
+            margin: 24px auto 0;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-proof-inner {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 24px rgba(255,203,5,0.15);
+            border: 2px solid rgba(255,203,5,0.3);
+            text-align: center;
+        }
+
+        .social-proof h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin-bottom: 16px;
+        }
+
+        .proof-stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .proof-stat {
+            text-align: center;
+        }
+
+        .proof-stat .stat-emoji {
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .proof-stat .num {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--poke-red);
+        }
+
+        .proof-stat .label {
+            font-size: 0.72rem;
+            color: #888;
+            font-weight: 600;
+        }
+
+        /* ---- TESTIMONIALS ---- */
+        .testimonials-section {
+            max-width: 600px;
+            margin: 0 auto 24px;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-section h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 10px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--poke-yellow);
+        }
+
+        .testimonial-stars {
+            color: var(--poke-yellow);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-text {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-author {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--poke-navy);
+        }
+
+        /* ---- ABOUT ---- */
+        .about-section {
+            max-width: 600px;
+            margin: 0 auto 24px;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-inner {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .about-inner h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin-bottom: 10px;
+        }
+
+        .about-inner p {
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ---- TRUST BADGES ---- */
+        .trust-badges {
+            max-width: 600px;
+            margin: 0 auto 24px;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badges-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--poke-navy);
+        }
+
+        .badge-icon {
+            font-size: 1.2rem;
+        }
+
+        /* ---- HOW IT WORKS ---- */
+        .how-section {
+            max-width: 600px;
+            margin: 20px auto 24px;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .how-section h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .how-step {
+            background: white;
+            border-radius: 14px;
+            padding: 20px 14px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .how-step-emoji {
+            font-size: 2rem;
+            display: block;
+            margin: 0 auto 8px;
+            text-align: center;
+        }
+
+        .how-step .num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.85rem;
+            margin: 0 auto 10px;
+            color: white;
+        }
+
+        .how-step:nth-child(1) .num { background: var(--poke-red); }
+        .how-step:nth-child(2) .num { background: var(--poke-blue); }
+        .how-step:nth-child(3) .num { background: var(--poke-green); }
+
+        .how-step h3 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin-bottom: 4px;
+        }
+
+        .how-step p {
+            font-size: 0.75rem;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        /* ---- FAQ ---- */
+        .faq-section {
+            max-width: 600px;
+            margin: 0 auto 100px;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-section h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--poke-navy);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s;
+        }
+
+        .faq-item:hover { box-shadow: var(--shadow-lg); }
+
+        .faq-q {
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--poke-navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-q::after {
+            content: '+';
+            font-size: 1.2rem;
+            color: var(--poke-yellow);
+            font-weight: 900;
+            transition: transform 0.2s;
+        }
+
+        .faq-item.open .faq-q::after { transform: rotate(45deg); color: var(--poke-red); }
+
+        .faq-a {
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, margin-top 0.3s;
+        }
+
+        .faq-item.open .faq-a { max-height: 480px; margin-top: 10px; }
+
+        /* ---- FOOTER ---- */
+        footer {
+            text-align: center;
+            padding: 24px 20px 80px;
+            /* 2026-05-13 UX audit N1: #aaa on #fff8f0 was 2.6:1, fails AA.
+               #5a5a5a = 6.4:1 against the cream bg, passes AA. */
+            color: #5a5a5a;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer a {
+            display: inline-block;
+            padding: 6px 4px;
+            min-height: 44px;
+            line-height: 44px;
+        }
+
+        .error-text {
+            color: var(--poke-red);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            display: none;
+        }
+
+        .time-preference-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .time-pref-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            border: 2px solid #e8e8ee;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.15s;
+            background: white;
+            position: relative;
+        }
+
+        .time-pref-card:hover {
+            border-color: var(--poke-blue);
+            background: rgba(59,76,202,0.02);
+        }
+
+        .time-pref-card.selected {
+            border-color: var(--poke-blue);
+            background: rgba(59,76,202,0.05);
+            box-shadow: 0 0 0 3px rgba(59,76,202,0.1);
+        }
+
+        .time-pref-icon {
+            font-size: 1.6rem;
+            min-width: 36px;
+            text-align: center;
+        }
+
+        .time-pref-label {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--poke-navy);
+        }
+
+        .time-pref-desc {
+            font-size: 0.78rem;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .time-pref-tag {
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+        }
+
+        .time-pref-tag.recommended {
+            background: var(--poke-green);
+            color: white;
+        }
+
+        .allday-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(76,175,80,0.06);
+            border: 2px solid rgba(76,175,80,0.2);
+            border-radius: 12px;
+            margin-bottom: 14px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--poke-navy);
+        }
+
+        .allday-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--poke-green);
+            cursor: pointer;
+        }
+
+        .time-grid.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* ---- TIER SELECTOR ---- */
+        .tier-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .tier-card {
+            position: relative;
+            padding: 14px 12px 14px 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            background: #fff;
+        }
+        .tier-card:hover {
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+        .tier-card.selected {
+            border-color: var(--poke-red);
+            box-shadow: 0 4px 16px rgba(227,53,13,0.12);
+            background: #fffbea;
+        }
+        .tier-card .tier-name {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: #1a1b3a;
+            margin-bottom: 2px;
+        }
+        .tier-card .tier-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--poke-red);
+            margin: 4px 0;
+        }
+        .tier-card .tier-price small {
+            font-size: 0.65rem;
+            color: #888;
+            font-weight: 600;
+        }
+        .tier-card .tier-perks {
+            font-size: 0.72rem;
+            color: #555;
+            line-height: 1.4;
+        }
+        .tier-card .tier-perks div {
+            margin-top: 4px;
+        }
+        .tier-card.priority .tier-badge-label {
+            position: absolute;
+            top: -8px;
+            right: 10px;
+            background: linear-gradient(135deg, #ffcb05 0%, #ff9800 100%);
+            color: #1a1b3a;
+            font-size: 0.6rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 10px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        @media (max-width: 540px) {
+            .tier-selector { grid-template-columns: 1fr; }
+        }
+
+        .terms-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-size: 0.82rem;
+            color: #666;
+        }
+
+        .terms-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--poke-blue);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .terms-check a {
+            color: var(--poke-blue);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .terms-check a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 520px) {
+            .header { padding: 16px 12px 14px; border-radius: 0 0 20px 20px; }
+            .header h1 { font-size: 1.45rem; }
+            .header p { font-size: 0.7rem; }
+            .header-check-link { font-size: 0.72rem !important; }
+            .floating-star { display: none; }
+            .price-bar { padding: 12px 14px; }
+            .price-bar .price { font-size: 1.05rem; }
+            .price-bar .flat-note { font-size: 0.62rem; }
+            #bar-step-info { display: none; }
+            #currency-select { padding: 8px 10px !important; font-size: 0.8rem !important; min-height: 44px; }
+            body { padding-bottom: 72px; }
+            .cal-grid { gap: 1px; padding: 6px; }
+            .cal-day { font-size: 0.78rem; border-radius: 8px; }
+            .cal-nav { width: 44px; height: 44px; }
+            .step-line { width: 24px; margin: 0 4px; margin-top: 16px; }
+            .step-circle { width: 44px; height: 44px; font-size: 0.85rem; }
+            .step-label { font-size: 0.7rem; }
+            .trust-bar { gap: 8px 16px; padding: 14px 12px 8px; }
+            .trust-item { font-size: 0.78rem; }
+            .usp-strip { font-size: 0.75rem; }
+            .usp-badge { font-size: 0.68rem; padding: 5px 8px; }
+            .usp-badge .usp-icon { font-size: 0.85rem; }
+            .hero-desc { margin: 12px auto 0; }
+            .hero-desc-inner { flex-direction: column; }
+            .hero-img { width: 100%; min-width: auto; min-height: 160px; }
+            .hero-text h2 { font-size: 1rem; }
+            .hero-text p { font-size: 0.8rem; }
+            .time-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-steps { grid-template-columns: 1fr; }
+            .card { padding: 20px 16px; }
+            .location-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div id="cafesnap-preview-ribbon" style="position:fixed;top:0;left:0;right:0;
+z-index:2147483647;background:#b91c1c;color:#fff;text-align:center;
+font:600 13px/1.45 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+padding:6px 10px;letter-spacing:.3px;pointer-events:none;
+box-shadow:0 1px 4px rgba(0,0,0,.35);">
+PREVIEW - visual only, not the live site
+</div>
+<div id="cafesnap-preview-spacer" style="height:30px;"></div>
+
+
+<div class="bg-pattern"></div>
+<div class="floating-star star-1">&#10022;</div>
+<div class="floating-star star-2">&#10022;</div>
+<div class="floating-star star-3">&#10022;</div>
+<div class="floating-star star-4">&#10022;</div>
+<div class="floating-star star-5">&#10022;</div>
+<div class="floating-star star-6">&#10022;</div>
+<div class="floating-star star-7">&#10022;</div>
+<div class="floating-star star-8">&#10022;</div>
+<div class="floating-star star-9">&#10022;</div>
+<div class="floating-star star-10">&#10022;</div>
+<div class="floating-star star-11">&#10022;</div>
+<div class="floating-star star-12">&#10022;</div>
+
+<!-- HEADER -->
+<div class="header" style="display:flex;align-items:center;justify-content:space-between;">
+    <div style="flex:1;display:flex;align-items:center;gap:8px;position:relative;">
+        <a href="/?lang=es" style="color:var(--poke-navy);font-weight:800;font-size:0.8rem;text-decoration:none;position:relative;opacity:0.75;white-space:nowrap;">ES</a>
+    </div>
+    <div style="position:relative;">
+        <a href="/cafesnap-preview/index.html" style="text-decoration:none;"><h1>Cafe<span>Snap</span></h1></a>
+        <p>Pokemon Cafe reservations, sorted.</p>
+    </div>
+    <div style="flex:1;display:flex;justify-content:flex-end;position:relative;">
+        <a href="/cafesnap-preview/status.html" class="header-check-link" style="color:var(--poke-navy);font-weight:700;font-size:0.8rem;text-decoration:none;position:relative;white-space:nowrap;opacity:0.7;">Check booking</a>
+    </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon trust-icon-yellow">⚡</span> <span id="usp-price">&#163;10 flat fee</span></div>
+    <div class="trust-item"><span class="trust-icon trust-icon-blue">👥</span> 1-6 guests &middot; same flat price</div>
+    <div class="trust-item"><span class="trust-icon trust-icon-green">🛡️</span> Full refund if we can&#39;t book</div>
+</div>
+
+<!-- URGENCY CHIP -->
+<div class="urgency-chip">
+    <div class="urgency-chip-inner" id="urgency-text">
+        🤖 We book your table. You enjoy the cafe.
+    </div>
+</div>
+
+<!-- HERO DESCRIPTION -->
+<div class="hero-desc">
+    <div class="hero-desc-inner">
+        <div class="hero-img" id="hero-img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Pokemon_Cafe_%28Shinsaibashi%29.jpg" alt="Pokemon Cafe Osaka and Tokyo" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, #ffcb05 0%, #e3350d 50%, #3b4cca 100%)';this.parentElement.style.minHeight='200px';">
+        </div>
+        <div class="hero-text">
+            <h2>Pokemon Cafe Osaka and Tokyo, booked for you in English.</h2>
+            <p>One flat fee. We book the table, you show up. If we cannot get it, you get an automatic full refund. No need to ask.</p>
+            <p>The Pokemon Cafe is one of the hardest restaurants in Japan to book. Osaka reservations open at 6 PM JST daily and sell out in <strong>seconds</strong>. Tokyo reopens June 17, 2026, and its first weeks of reservations all drop together at 6 PM JST. Our bot watches every release so you don&#39;t have to.</p>
+            <p style="margin-top:10px;padding:10px 14px;background:#e8f5e9;border-radius:10px;font-size:0.85rem;color:#2e7d32;font-weight:700;line-height:1.5;">Same flat fee whether you&#39;re solo or a group of 6. No per-person charges. No surprises.</p>
+        </div>
+    </div>
+</div>
+
+<!-- STEPPER -->
+<div id="step-1-card" class="stepper">
+    <div class="step-item" onclick="jumpToStep(1)">
+        <div class="step-circle active" id="step-circle-1">1</div>
+        <span class="step-label">Details</span>
+    </div>
+    <div class="step-line" id="step-line-1"></div>
+    <div class="step-item" onclick="jumpToStep(2)">
+        <div class="step-circle inactive" id="step-circle-2">2</div>
+        <span class="step-label">Date</span>
+    </div>
+    <div class="step-line" id="step-line-2"></div>
+    <div class="step-item" onclick="jumpToStep(3)">
+        <div class="step-circle inactive" id="step-circle-3">3</div>
+        <span class="step-label">Time</span>
+    </div>
+    <div class="step-line" id="step-line-3"></div>
+    <div class="step-item" onclick="jumpToStep(4)">
+        <div class="step-circle inactive" id="step-circle-4">4</div>
+        <span class="step-label">Pay</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- STEP 1: Location + Guests + Contact -->
+    <div class="step-panel active" id="panel-1">
+        <div class="card">
+            <div class="card-title">
+                <div class="icon" style="background:rgba(59,76,202,0.1);color:var(--poke-blue);">&#9873;</div>
+                Choose your cafe
+            </div>
+
+            <div class="location-cards">
+                <div class="location-card selected" data-loc="tokyo" onclick="selectLocation(this)">
+                    <div class="city">Tokyo</div>
+                    <div class="area">Nihonbashi, Chuo City</div>
+                    <div class="address">Takashimaya SC East Bldg. 5F, 2-11-2 Nihonbashi</div>
+                    <div class="status status-open">Reopens June 17 &middot; book dates from then</div>
+                </div>
+                <div class="location-card" data-loc="osaka" onclick="selectLocation(this)">
+                    <div class="city">Osaka</div>
+                    <div class="area">Shinsaibashi, Chuo-ku</div>
+                    <div class="address">Daimaru Shinsaibashi 9F, 1-7-1 Shinsaibashisuji</div>
+                    <div class="status status-open">Open now</div>
+                </div>
+            </div>
+
+            <div class="guest-row">
+                <label>Guests</label>
+                <div class="guest-counter">
+                    <button class="guest-btn" onclick="changeGuests(-1)">-</button>
+                    <div class="guest-count" id="guest-count">2</div>
+                    <button class="guest-btn" onclick="changeGuests(1)">+</button>
+                </div>
+            </div>
+            <div style="font-size:0.73rem;color:#888;margin-top:-14px;margin-bottom:18px;">Children and babies count as guests too</div>
+
+            <div class="form-group">
+                <label>Your name</label>
+                <input type="text" id="customer_name" maxlength="50" placeholder="As you&#39;ll give at the cafe" onkeydown="handleFormEnter(event)">
+                <div style="font-size:0.75rem;color:#888;margin-top:5px;line-height:1.4;">You&#39;ll give this name at the entrance, so use your real name</div>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="customer_email" maxlength="120" placeholder="We&#39;ll send confirmation here" onkeydown="handleFormEnter(event)">
+                <div style="font-size:0.75rem;color:#888;margin-top:5px;line-height:1.4;">Make sure this is correct - we&#39;ll send your reservation here</div>
+            </div>
+
+            <!-- Task #250: OPTIONAL acquisition-source select. Purely
+                 analytics. NOT required, has no validation, and is NEVER
+                 read by goToStep()/submitBooking() gating, so its
+                 presence/absence/value can never block or alter submit. -->
+            <div class="form-group">
+                <label>How did you hear about us? <span style="font-weight:400;color:#999;">(optional)</span></label>
+                <select id="acquisition_source" style="width:100%;padding:12px;border:2px solid #e0e0e0;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.95rem;background:white;color:var(--poke-navy);">
+                    <option value="">Prefer not to say</option>
+                    <option value="google">Google search</option>
+                    <option value="reddit">Reddit / forum</option>
+                    <option value="friend">A friend</option>
+                    <option value="twitter">Twitter / X</option>
+                    <option value="instagram_tiktok">Instagram / TikTok</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Hidden attribution inputs, filled from the URL on load.
+                 Never required, never validated, analytics only. -->
+            <input type="hidden" id="utm_source" value="">
+            <input type="hidden" id="utm_medium" value="">
+            <input type="hidden" id="utm_campaign" value="">
+            <input type="hidden" id="acq_referrer" value="">
+
+            <div class="error-text" id="step1-error">Please fill in all fields</div>
+
+            <div class="btn-row">
+                <button class="btn-next" onclick="goToStep(2)">Choose dates</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 2: Calendar -->
+    <div class="step-panel" id="panel-2">
+        <div class="card">
+            <div class="card-title">
+                <div class="icon" style="background:rgba(255,152,0,0.1);color:var(--poke-orange);">&#128197;</div>
+                When do you want to go?
+            </div>
+
+            <div class="date-mode-toggle">
+                <button class="mode-btn active" onclick="setDateMode('exact')">Exact date</button>
+                <button class="mode-btn" onclick="setDateMode('range')">Multiple dates (up to 3)</button>
+            </div>
+
+            <div class="calendar">
+                <div class="cal-header">
+                    <button class="cal-nav" onclick="changeMonth(-1)">&#8249;</button>
+                    <span class="month-year" id="month-year"></span>
+                    <button class="cal-nav" onclick="changeMonth(1)">&#8250;</button>
+                </div>
+                <div class="cal-grid" id="cal-grid"></div>
+                <div class="cal-legend">
+                    <span><span class="dot avail-high"></span> Likely available</span>
+                    <span><span class="dot avail-med"></span> Limited</span>
+                    <span><span class="dot avail-low"></span> High demand</span>
+                </div>
+                <p style="font-size:0.65rem;color:#aaa;text-align:center;margin:4px 0 0;">Estimated based on day of week. Weekdays are easier to book than weekends.</p>
+            </div>
+
+            <div class="selected-dates" id="selected-dates"></div>
+            <div class="error-text" id="step2-error">Please select at least one date</div>
+
+            <div class="btn-row" style="margin-top:16px;">
+                <button class="btn-back" onclick="goToStep(1)">Back</button>
+                <button class="btn-next" onclick="goToStep(3)">Choose times</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 3: Time preference -->
+    <div class="step-panel" id="panel-3">
+        <div class="card">
+            <div class="card-title">
+                <div class="icon" style="background:rgba(76,175,80,0.1);color:var(--poke-green);">&#9200;</div>
+                When would you like to eat?
+            </div>
+
+            <p style="color:#666;font-size:0.85rem;line-height:1.6;margin-bottom:20px;">Choose a time preference. All times are in <strong>Japan Standard Time (JST)</strong>. Wider windows give you the best chance of getting a table.</p>
+
+            <div class="time-preference-grid" id="time-pref-grid">
+                <div class="time-pref-card selected" data-pref="anytime" onclick="selectTimePref('anytime')">
+                    <div class="time-pref-icon">&#127775;</div>
+                    <div class="time-pref-label">Any time</div>
+                    <div class="time-pref-desc">Best chance of getting a table</div>
+                    <div class="time-pref-tag recommended">Recommended</div>
+                </div>
+                <div class="time-pref-card" data-pref="before14" onclick="selectTimePref('before14')">
+                    <div class="time-pref-icon">&#9728;&#65039;</div>
+                    <div class="time-pref-label">Before 14:00</div>
+                    <div class="time-pref-desc" id="pref-desc-before14">Lunch - 10:30 to 13:30</div>
+                </div>
+                <div class="time-pref-card" data-pref="after14" onclick="selectTimePref('after14')">
+                    <div class="time-pref-icon">&#127769;</div>
+                    <div class="time-pref-label">After 14:00</div>
+                    <div class="time-pref-desc" id="pref-desc-after14">Afternoon/dinner - 14:00 to 19:30</div>
+                </div>
+            </div>
+
+            <div class="zone-legend" id="zone-legend" style="margin-top:20px;"></div>
+
+            <div class="error-text" id="step3-error">Please select a time preference</div>
+
+            <div class="btn-row" style="margin-top:16px;">
+                <button class="btn-back" onclick="goToStep(2)">Back</button>
+                <button class="btn-next" onclick="goToStep(4)">Review &amp; pay</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 4: Summary + Pay -->
+    <div class="step-panel" id="panel-4">
+        <div class="card">
+            <div class="card-title">
+                <div class="icon" style="background:rgba(227,53,13,0.1);color:var(--poke-red);">&#10003;</div>
+                Confirm your booking
+            </div>
+
+            <div class="summary" id="summary"></div>
+
+            <div class="tier-selector">
+                <div class="tier-card selected" id="tier-card-standard" onclick="selectTier('standard')">
+                    <div class="tier-name">Standard</div>
+                    <div class="tier-price"><span id="tier-price-standard">&#163;10</span> <small>flat fee</small></div>
+                    <div class="tier-perks">
+                        <div>&#10003; We try your dates</div>
+                        <div>&#10003; Full refund if we fail</div>
+                        <div>&#10003; Email + <a href="https://t.me/cafesnap_support_bot" target="_blank" style="color:#3b4cca;">Telegram</a> support</div>
+                    </div>
+                </div>
+                <div class="tier-card priority" id="tier-card-priority" onclick="selectTier('priority')">
+                    <div class="tier-badge-label">Priority, best for tight trips</div>
+                    <div class="tier-name">Priority</div>
+                    <div class="tier-price"><span id="tier-price-priority">&#163;22</span> <small>flat fee</small></div>
+                    <div class="tier-perks">
+                        <div>&#9889; Front of the queue: we try your booking before every standard customer</div>
+                        <div>&#9889; Best for a popular weekend or a single fixed date where you only get one shot</div>
+                        <div>&#9889; Same full automatic refund as standard if we cannot get it</div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size:0.8rem;color:#888;text-align:center;margin-bottom:16px;">
+                Full refund if we can&#39;t secure your reservation.
+            </p>
+
+            <label class="terms-check">
+                <input type="checkbox" id="terms-agree" onchange="updatePayBtn()">
+                I agree to the <a href="/cafesnap-preview/terms.html" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">Terms &amp; Conditions</a>
+            </label>
+
+            <div class="btn-row">
+                <button class="btn-back" onclick="goToStep(3)">Back</button>
+                <button class="btn-pay" id="pay-btn" disabled onclick="submitBooking()">
+                    Pay £10 - Catch it!
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- SEAT MAP -->
+<div class="section" id="seatmap-section">
+    <h2>Seating zones</h2>
+    <div class="seatmap-card" id="seatmap-osaka" style="display:none;">
+        <div class="seatmap-header">Osaka - Daimaru Shinsaibashi 9F</div>
+        <div class="seatmap-layout">
+            <div class="seatmap-grid">
+                <!-- Zone A - left tables -->
+                <div class="seatmap-zone zone-left">
+                    <div class="seatmap-table zone-color-A">
+                        <span class="table-label">A</span>
+                    </div>
+                    <div class="seatmap-table zone-color-A">
+                        <span class="table-label">A</span>
+                    </div>
+                    <div class="seatmap-table zone-color-A">
+                        <span class="table-label">A</span>
+                    </div>
+                </div>
+                <!-- Zone C - center counters -->
+                <div class="seatmap-zone zone-center">
+                    <div class="seatmap-counter zone-color-C">
+                        <span class="table-label">C</span>
+                        <span class="counter-text">Counter</span>
+                    </div>
+                    <div class="seatmap-counter zone-color-C">
+                        <span class="table-label">C</span>
+                        <span class="counter-text">Counter</span>
+                    </div>
+                </div>
+                <!-- Zone B - right tables -->
+                <div class="seatmap-zone zone-right">
+                    <div class="seatmap-table zone-color-B">
+                        <span class="table-label">B</span>
+                    </div>
+                    <div class="seatmap-table zone-color-B">
+                        <span class="table-label">B</span>
+                    </div>
+                    <div class="seatmap-table zone-color-B">
+                        <span class="table-label">B</span>
+                    </div>
+                </div>
+            </div>
+            <div class="seatmap-entrance">Entrance</div>
+        </div>
+        <div class="seatmap-legend">
+            <div><span class="seatmap-dot" style="background:var(--poke-blue);"></span> <strong>Zone A</strong> - Table seats (2-6 guests)</div>
+            <div><span class="seatmap-dot" style="background:var(--poke-red);"></span> <strong>Zone B</strong> - Table seats (2-6 guests)</div>
+            <div><span class="seatmap-dot" style="background:var(--poke-green);"></span> <strong>Zone C</strong> - Counter &amp; table (1-6 guests, solo-friendly)</div>
+        </div>
+        <p class="seatmap-note">Zone A is closest to the character show. All zones get the full experience - characters visit every table!</p>
+    </div>
+    <div class="seatmap-card" id="seatmap-tokyo">
+        <div class="seatmap-header">Tokyo - Nihonbashi</div>
+        <div class="seatmap-renovation">
+            <span style="font-size:2rem;">&#127919;</span>
+            <h3>Reopening June 17, 2026</h3>
+            <p>The newly renovated Tokyo Pokemon Cafe reopens on June 17, 2026 with a fresh seat layout. The cafe drops <strong>all 21 days of reservations</strong> (June 17 - July 7) all at once at <strong>6 PM JST</strong>, then opens new dates daily at 6 PM JST after that. Pick any Tokyo date from June 17 onwards and our bot fires the moment that release happens.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Customer-facing benefits only. No infra details (server count, scanner
+     scale, etc) — leaks competitor info and customer doesn't care. Each
+     stat is a real, verifiable customer-side benefit. -->
+<div class="social-proof">
+    <div class="social-proof-inner">
+        <h3>Tracking Pokemon Cafe slots round the clock</h3>
+        <div class="proof-stats">
+            <div class="proof-stat">
+                <span class="stat-emoji">✅</span>
+                <div class="num">100%</div>
+                <div class="label">Auto refund if we miss</div>
+            </div>
+            <div class="proof-stat">
+                <span class="stat-emoji">🌏</span>
+                <div class="num">2</div>
+                <div class="label">Cafes: Osaka &amp; Tokyo</div>
+            </div>
+            <div class="proof-stat">
+                <span class="stat-emoji">⏰</span>
+                <div class="num">24/7</div>
+                <div class="label">Slot &amp; cancellation watch</div>
+            </div>
+            <div class="proof-stat">
+                <span class="stat-emoji">🔒</span>
+                <div class="num">Stripe</div>
+                <div class="label">Card never touches us</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div style="max-width:600px;margin:40px auto;padding:0 16px;">
+    <h2 style="text-align:center;font-size:1.4rem;font-weight:900;color:#1a1b3a;margin-bottom:24px;">How it works</h2>
+    <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+            <div style="min-width:44px;height:44px;background:#ffcb05;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#1a1b3a;font-size:1.1rem;">1</div>
+            <div><div style="font-weight:800;color:#1a1b3a;margin-bottom:4px;">Pick your dates and guests</div><div style="color:#666;font-size:0.85rem;line-height:1.5;">Choose up to 3 dates and your party size (1-6 guests). More dates = better chances.</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+            <div style="min-width:44px;height:44px;background:#e3350d;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:1.1rem;">2</div>
+            <div><div style="font-weight:800;color:#1a1b3a;margin-bottom:4px;">Pay once, we handle the rest</div><div style="color:#666;font-size:0.85rem;line-height:1.5;">One flat fee regardless of group size. Our bot starts scanning for your slot immediately.</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+            <div style="min-width:44px;height:44px;background:#3b4cca;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:1.1rem;">3</div>
+            <div><div style="font-weight:800;color:#1a1b3a;margin-bottom:4px;">Bot scans 24/7 for your table</div><div style="color:#666;font-size:0.85rem;line-height:1.5;">We check for availability hundreds of times per day. The moment a slot opens, we grab it in seconds.</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+            <div style="min-width:44px;height:44px;background:#4caf50;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:1.1rem;">4</div>
+            <div><div style="font-weight:800;color:#1a1b3a;margin-bottom:4px;">Get your confirmation email</div><div style="color:#666;font-size:0.85rem;line-height:1.5;">When we secure your table, you get an email with all the details. Just show up and enjoy! No reservation? Full refund.</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- Trust strip + how-we-handle-your-money — confident, no fake reviews -->
+<div class="testimonials-section">
+    <h2>How we handle your booking</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:720px;margin:0 auto;">
+        <div style="background:white;border:2px solid rgba(34,197,94,0.25);border-radius:14px;padding:18px;">
+            <div style="font-size:1.8rem;line-height:1;margin-bottom:6px;">🛡️</div>
+            <div style="font-weight:800;color:#1a1b3a;margin-bottom:4px;font-size:0.95rem;">100% refund guarantee</div>
+            <div style="color:#666;font-size:0.85rem;line-height:1.55;">If we can&#39;t secure your slot, Stripe auto-refunds you in full. No tickets to open, no chasing.</div>
+        </div>
+        <div style="background:white;border:2px solid rgba(59,76,202,0.25);border-radius:14px;padding:18px;">
+            <div style="font-size:1.8rem;line-height:1;margin-bottom:6px;">🔒</div>
+            <div style="font-weight:800;color:#1a1b3a;margin-bottom:4px;font-size:0.95rem;">Stripe-secured payment</div>
+            <div style="color:#666;font-size:0.85rem;line-height:1.55;">Your card details never touch our servers. Stripe handles every transaction with bank-level security.</div>
+        </div>
+        <div style="background:white;border:2px solid rgba(255,203,5,0.4);border-radius:14px;padding:18px;">
+            <div style="font-size:1.8rem;line-height:1;margin-bottom:6px;">💬</div>
+            <div style="font-weight:800;color:#1a1b3a;margin-bottom:4px;font-size:0.95rem;">English-speaking support</div>
+            <div style="color:#666;font-size:0.85rem;line-height:1.55;">Question about your booking? Message us on Telegram. We reply in plain English, usually within an hour.</div>
+        </div>
+        <div style="background:white;border:2px solid rgba(227,53,13,0.2);border-radius:14px;padding:18px;">
+            <div style="font-size:1.8rem;line-height:1;margin-bottom:6px;">🤖</div>
+            <div style="font-weight:800;color:#1a1b3a;margin-bottom:4px;font-size:0.95rem;">Built for the 6 PM JST race</div>
+            <div style="color:#666;font-size:0.85rem;line-height:1.55;">Our bot fires inside the first second the cafe opens slots. The big Tokyo batch releases, when weeks of dates drop at once, are exactly what it is built for.</div>
+        </div>
+    </div>
+    <p style="text-align:center;max-width:520px;margin:24px auto 0;color:#777;font-size:0.85rem;line-height:1.6;">
+        Independent service, not affiliated with The Pokemon Company, Nintendo, or Pokemon Cafe.
+    </p>
+</div>
+
+<!-- ABOUT -->
+<div class="about-section">
+    <div class="about-inner">
+        <div style="font-size:2rem;margin-bottom:10px;">✨</div>
+        <h2>Built by travellers, for travellers</h2>
+        <p>We created CafeSnap after spending hours trying to book the Pokemon Cafe ourselves. Refreshing the page, watching it sell out, losing slots in seconds. We built the Pokemon Cafe booking bot we wished existed, so now our system does the hard part and you can focus on enjoying Japan.</p>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+    <h2>Questions</h2>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Is this affiliated with Pokemon Cafe?</div>
+        <div class="faq-a">No. CafeSnap is an independent reservation service. We are not affiliated with The Pokemon Company, Nintendo, or Pokemon Cafe. The cafe&#39;s own booking site is free. You&#39;re paying us to do the booking on your behalf because slots sell out in seconds.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">What happens if you can&#39;t get the booking?</div>
+        <div class="faq-a">Full automatic refund. We issue it the day after the last of your preferred dates passes without us booking it. You don&#39;t have to ask or chase us. It hits your bank in 5 to 10 business days depending on your card.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Is this legal?</div>
+        <div class="faq-a">Yes. We book on your behalf using the name you give us, the same way a hotel concierge or travel agent would. The reservation is in your name. We send you a confirmation with everything you need to walk in and be seated.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">What if the cafe cancels my booking after we get it?</div>
+        <div class="faq-a">If the cafe cancels for its own reasons (closure, renovation, an issue on their side), that sits with their own refund policy. Our fee covers securing the reservation, not the cafe&#39;s own decisions afterwards. Cases like this are very rare and we&#39;ll always help you contact the cafe.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Do you charge per person?</div>
+        <div class="faq-a">No. One flat fee covers your whole party (1-6 guests at both cafes). A family of 4 pays the same as a solo visitor. No per-person upcharge, no service fee added at checkout.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Can I cancel?</div>
+        <div class="faq-a">Yes, until 10pm JST the night before your reservation date, which is the cafe&#39;s own cancellation deadline. Cancel from the &#34;Check booking&#34; page any time. A small processing fee applies (10%, minimum £1.50) to cover Stripe&#39;s costs. If we&#39;ve already secured your reservation at the cafe, we cancel it there on your behalf too.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Why is your fee higher than some other services?</div>
+        <div class="faq-a">You can see exactly who we are, contact us on Telegram, and read our refund terms before paying. If we don&#39;t get your booking, you get a full refund automatically. No hidden per-person charges or surprise fees at checkout. Cheaper services tend to be anonymous listings with no refund guarantee. We&#39;d rather charge a fair flat fee and stand behind it.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">How does the bot work?</div>
+        <div class="faq-a">Two ways. First, an automated wave at 6pm JST, when the cafe opens new slots. Osaka releases dates roughly 31 days ahead each day, while the Tokyo cafe released its first reopening weeks all together in one batch. Our bot handles both, submitting the moment slots drop, faster than a human can click. Second, a continuous scanner that watches for cancellations all day and grabs them the instant they appear. Most bookings happen in the first wave, but cancellation pickup keeps trying right up to your date.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Why do you need my email?</div>
+        <div class="faq-a">So we can send you your booking confirmation, including the date, time, and guest name to show at the door. We handle everything with the cafe on our side. You just turn up.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Is my payment secure?</div>
+        <div class="faq-a">Yes. Payment goes through Stripe Checkout, the same system used by millions of online businesses. We never see, store, or touch your card details. Stripe is fully PCI compliant. You can also pay with Apple Pay, Google Pay, or Link if your browser supports them.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Can I select multiple dates?</div>
+        <div class="faq-a">Yes. You can pick up to 3 preferred dates. We try all of them and book whichever opens up first. More dates means better chances. One flat fee covers the lot.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">What are the zone letters (A/B/C)?</div>
+        <div class="faq-a">The cafe has 3 seating areas. A and B are table seats for 2-6 guests. C is counter and table seats for 1-6 guests. Different zones have different available times. If you don&#39;t mind, leave it on &#34;any&#34; for the best odds.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Is there a bot for the Pokemon Cafe?</div>
+        <div class="faq-a">Yes. CafeSnap is a Pokemon Cafe booking bot and reservation service. When the cafe releases seats at 6pm JST and they sell out in seconds, our bot submits faster than a person can click, and a continuous scanner keeps watching for cancellations after that. You give us your dates once and we do the booking on your behalf for one flat fee.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open');if(typeof gtag==='function')gtag('event','faq_click',{event_label:this.querySelector('.faq-q')?.textContent})">
+        <div class="faq-q">Can a service book the Pokemon Cafe for me if it is sold out?</div>
+        <div class="faq-a">That is exactly what we do. The Pokemon Cafe in Osaka and Tokyo is often sold out within seconds of release, so most people who can&#39;t get a reservation either gave up or missed the 6pm JST window. We book it for you: our system tries your preferred dates at release and keeps chasing cancellation seats right up to your date. If we can&#39;t get any of your dates, you get a full automatic refund.</div>
+    </div>
+    <div style="text-align:center;margin-top:22px;font-size:0.88rem;color:#666;">
+        Still not sure how it works?
+        <a href="https://cafesnapbot.com/guides/how-cafesnap-books-for-you" style="color:var(--poke-blue);font-weight:800;text-decoration:none;border-bottom:2px solid var(--poke-yellow);padding-bottom:1px;">See exactly how CafeSnap books for you, step by step</a>
+    </div>
+</div>
+
+<!-- TRUST BADGES -->
+<div class="trust-badges">
+    <div class="badges-row">
+        <div class="badge-item"><span class="badge-icon">🔒</span> Secure payments via Stripe</div>
+        <div class="badge-item"><span class="badge-icon">💰</span> Full refund guarantee</div>
+        <div class="badge-item"><span class="badge-icon">💬</span> <a href="https://t.me/cafesnap_support_bot" target="_blank" style="color:inherit;text-decoration:none;">Telegram support</a></div>
+    </div>
+</div>
+
+<footer>
+    
+    <div style="margin-bottom:14px;">
+        <strong style="color:#888;font-size:0.82rem;">Guides:</strong>
+        <a href="https://cafesnapbot.com/guides/how-to-book-pokemon-cafe" style="color:#888;">How to book the Pokemon Cafe</a> &middot;
+        <a href="https://cafesnapbot.com/guides/pokemon-cafe-reservation-help" style="color:#888;">Pokemon Cafe reservation help</a> &middot;
+        <a href="https://cafesnapbot.com/guides/is-cafesnap-legit" style="color:#888;">Is CafeSnap legit?</a>
+    </div>
+    
+    <a href="/cafesnap-preview/status.html" style="color:#888;font-weight:700;">Check your booking</a> | <a href="/cafesnap-preview/terms.html" style="color:#888;">Terms</a><br><br>
+    CafeSnap is not affiliated with The Pokemon Company, Nintendo, or Pokemon Cafe.<br>
+    Independent reservation assistance service. All trademarks belong to their respective owners.<br>
+    Questions? <a href="https://t.me/cafesnap_support_bot" style="color:#888;">Chat with us on Telegram</a> | <a href="mailto:bookings@cafesnapbot.com" style="color:#888;">bookings@cafesnapbot.com</a>
+</footer>
+
+<!-- STICKY PRICE BAR -->
+<div class="price-bar">
+    <div>
+        <div class="price" id="price-display">&#163;10 <small>flat fee</small></div>
+        <div class="flat-note">Same price, any group size</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+        <a href="#step-1-card" style="background:var(--poke-red);color:#fff;padding:8px 18px;border-radius:10px;font-weight:800;font-size:0.85rem;text-decoration:none;white-space:nowrap;font-family:'Nunito',sans-serif;">Book now</a>
+        <select id="currency-select" onchange="changeCurrency(this.value)" style="padding:6px 10px;border:2px solid #e0e0e0;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.8rem;background:white;color:var(--poke-navy);cursor:pointer;">
+            <option value="gbp">&#163; GBP</option>
+            <option value="usd">$ USD</option>
+            <option value="eur">&euro; EUR</option>
+            <option value="aud">A$ AUD</option>
+            <option value="jpy">&yen; JPY</option>
+        </select>
+        <span id="bar-step-info" style="font-size:0.8rem;font-weight:700;color:var(--poke-blue);">Step 1 of 4</span>
+    </div>
+</div>
+
+<script>
+    // ---- i18n: server-injected dictionary ----
+    const T = {"footer.chat_telegram": "Chat with us on Telegram", "index.js.afternoon": "Afternoon/dinner", "index.js.already_booked": "You already have a booking for this date. Book again?", "index.js.closed": "Closed", "index.js.err_email": "Please enter a valid email address", "index.js.err_location": "Please select a location", "index.js.err_name": "Please enter your name", "index.js.err_name_chars": "Name can only contain letters, spaces, hyphens and apostrophes (no numbers or symbols).", "index.js.err_name_long": "Name must be under 50 characters", "index.js.err_name_real": "Please enter your real name. You\u0027ll need to give this name at the cafe entrance.", "index.js.generic_error": "Something went wrong. Please try again.", "index.js.lunch": "Lunch", "index.js.max_dates": "You can pick up to 3 dates. Remove one to swap.", "index.js.no_checkout": "No checkout URL received", "index.js.osaka_closed": "Cafe closed for menu update (June 8-16)", "index.js.redirecting": "Redirecting to payment...", "index.js.renovation": "Renovation", "index.js.today": "Today", "index.js.tokyo_reopens": "Tokyo cafe reopens June 17, 2026", "index.price_bar.flat_fee": "flat fee", "index.s4.pay_button": "Pay {price} - Catch it!", "index.s4.tier_standard": "Standard", "index.step_indicator": "Step {n} of 4", "index.summary.date": "Date", "index.summary.dates": "Dates", "index.summary.email": "Email", "index.summary.first_attempt": "First booking attempt", "index.summary.flat": "flat", "index.summary.guests": "Guests", "index.summary.location": "Location", "index.summary.name": "Name", "index.summary.osaka_label": "Osaka (Shinsaibashi)", "index.summary.pref_after14": "After 14:00 (afternoon/dinner)", "index.summary.pref_anytime": "Any time (best chance)", "index.summary.pref_before14": "Before 14:00 (lunch)", "index.summary.scanning_blurb": "Our bot is scanning for available slots every few minutes. As soon as one opens up, we grab it and send you a confirmation email. We keep trying right up to your date. If we can\u0027t get it, full automatic refund.", "index.summary.searching_now": "actively scanning for slots now", "index.summary.status_label": "Status", "index.summary.tier": "Tier", "index.summary.tier_priority_long": "Priority (queue first)", "index.summary.time_pref": "Time preference", "index.summary.tokyo_label": "Tokyo (Nihonbashi)", "index.summary.total": "Total", "index.summary.wave_blurb": "That\u0027s when the cafe drops your date. If we win the wave: confirmation email within ~5 min. If sold out: we keep scanning every few minutes for cancellation slots. If we still can\u0027t book it, full automatic refund.", "index.trust.flat_fee": "flat fee", "status.find_btn": "Find my bookings", "status.js.cancel_confirmed_btn": "Cancel confirmed booking (non-refundable)", "status.js.cancel_msg_both": "Booking cancelled and your seat released. We have also cancelled your reservation at the Pokemon Cafe for you. A confirmed booking is non-refundable under our terms, so no refund was issued.", "status.js.cancel_msg_partial": "Booking cancelled and your seat released. We could not automatically cancel your Pokemon Cafe reservation, so please message us on Telegram so we can cancel it at the cafe manually for you. A confirmed booking is non-refundable under our terms, so no refund was issued.", "status.js.cancel_msg_simple": "Your booking is cancelled. Your refund (minus a small processing fee) will appear in 5-10 business days.", "status.js.cancel_searching_btn": "Cancel booking (processing fee applies)", "status.js.col_booked": "Booked", "status.js.col_date": "Date", "status.js.col_dates": "Dates", "status.js.col_guests": "Guests", "status.js.complete_payment": "Complete payment", "status.js.confirm_cancel": "Are you sure? A small processing fee will be deducted from your refund.", "status.js.confirm_cancel_confirmed": "This releases your seat and we cancel it at the Pokemon Cafe for you. A confirmed booking is non-refundable under our terms, so there will be NO refund.\n\nAre you sure?", "status.js.confirm_remove": "Remove this unpaid booking?", "status.js.confirmed_at": "Confirmed at", "status.js.error_generic": "Something went wrong. Please try again.", "status.js.help_blurb": "Our bot scans for availability every 2-3 minutes. New slots open at 6pm JST daily, and cancellations appear throughout the day (especially 9-11pm JST). This page auto-refreshes every 30 seconds.", "status.js.help_heading": "How it works:", "status.js.incorrect_code": "Incorrect code. Try again.", "status.js.lbl_confirmed": "Confirmed!", "status.js.lbl_failed": "Could not book", "status.js.lbl_payment_pending": "Payment pending", "status.js.lbl_refunded": "Refunded", "status.js.lbl_scanning": "Actively checking for cancellations", "status.js.lbl_searching": "Scanning for your slot", "status.js.lbl_waiting": "Waiting for cafe to release date", "status.js.loading": "Loading...", "status.js.more_suffix": "more", "status.js.no_bookings": "No bookings found for this email.", "status.js.official_resv": "Your official Pokemon Cafe reservation", "status.js.payment_not_completed": "Payment not completed", "status.js.remove": "Remove", "status.js.reservation_code": "Reservation ID", "status.js.rid_warn_body": "Your reservation is confirmed and secured. Under our terms a secured booking is non-refundable, you will not receive a refund for it. Do not cancel it yourself on the Pokemon Cafe site: if you do you will lose the seat and you will still get no refund. If your plans change, contact us first.", "status.js.rid_warn_title": "This booking is final and non-refundable.", "status.js.scanning_card": "Your date has opened and is currently full. Our bot is checking continuously for a cancellation and will email you the instant it catches one, or refund you in full automatically if your dates pass.", "status.js.searching_queue_pre": "in queue for this date.", "status.js.searching_tail": "We\u0027ll email you as soon as we secure your table", "status.js.sending": "Sending code...", "status.js.show_at_cafe": "Give your name at the entrance. We handle the rest.", "status.js.too_many": "Too many attempts. Please wait a minute.", "status.js.verify_expired": "Verification expired. Please start over.", "status.js.verifying": "Verifying...", "status.js.view_cafe": "View it on the Pokemon Cafe site", "status.js.waiting_card": "Your date has not opened at the cafe yet. Our bot fires the instant it opens and then keeps watching for cancellations. We will email you the moment we secure your table, or refund you in full automatically if we cannot.", "status.need_help": "Need help?", "status.verify_btn": "Verify"};
+    const LANG = "en";
+    const tt = (k, fb) => (T && T[k]) ? T[k] : (fb || k);
+    const DATE_LOCALE = LANG === 'es' ? 'es-ES' : 'en-GB';
+
+    // ---- TOAST ----
+    // Tiny self-contained toast: append, fade in, fade out, remove.
+    // Used by selectDate to surface the 3-date cap (UX audit U5).
+    function showToast(msg) {
+        try {
+            const t = document.createElement('div');
+            t.textContent = msg;
+            t.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:#1a1b3a;color:#fff;padding:12px 20px;border-radius:10px;font-size:0.88rem;font-weight:700;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,0.2);opacity:0;transition:opacity 0.2s,transform 0.2s;max-width:88vw;text-align:center;';
+            document.body.appendChild(t);
+            requestAnimationFrame(() => { t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)'; });
+            setTimeout(() => {
+                t.style.opacity = '0';
+                t.style.transform = 'translateX(-50%) translateY(20px)';
+                setTimeout(() => { try { document.body.removeChild(t); } catch (e) {} }, 220);
+            }, 2800);
+        } catch (e) { /* swallow; toast is non-critical */ }
+    }
+
+    // ---- STATE ----
+    let currentStep = 1;
+    // Tokyo is the default cafe: it is the post-renovation reopening and the
+    // highest demand. Osaka stays fully selectable via the selector card.
+    let selectedLocation = 'tokyo';
+    let allDayMode = false;
+    let guestCount = 2;
+    let dateMode = 'exact'; // 'exact' or 'range'
+    let selectedDates = [];
+    let selectedTimes = new Set();
+    let calMonth = new Date().getMonth();
+    let calYear = new Date().getFullYear();
+    let selectedCurrency = 'gbp';
+    let selectedTier = 'standard';
+
+    // Base price from backend (BOOKING_PRICE_CENTS env var)
+    const BASE_GBP_CENTS = 1000;
+    const BASE_GBP = BASE_GBP_CENTS / 100;
+    // FX approximations from GBP base
+    // 2026-05-11: aligned with backend app.py:_fx. Frontend used to show
+    // {eur:1.16, aud:1.93, jpy:190}, backend charged {eur:1.17, aud:1.95, jpy:195},
+    // so non-GBP customers saw one price on form + got charged ~1-3% more at Stripe.
+    const _fx = { gbp: 1, usd: 1.27, eur: 1.17, aud: 1.95, jpy: 195 };
+    function _mkPrice(gbpCents, sym, curr) {
+        // Must match backend app.py FX math exactly
+        let val;
+        if (curr === 'jpy') {
+            // JPY has no minor units: pence -> GBP -> JPY
+            val = Math.round(gbpCents / 100 * _fx[curr]); // 800/100*190 = 1520
+        } else {
+            // Other currencies use cents: pence * rate
+            val = Math.round(gbpCents * _fx[curr]); // 800*1.27 = 1016
+        }
+        const disp = curr === 'jpy' ? `${sym}${val.toLocaleString()}` : `${sym}${(val/100).toFixed(2)}`;
+        return { amount: val, symbol: sym, display: disp };
+    }
+    const PRICES = {
+        gbp: { amount: BASE_GBP_CENTS, symbol: '£', display: `£${BASE_GBP}` },
+        usd: _mkPrice(BASE_GBP_CENTS, '$', 'usd'),
+        eur: _mkPrice(BASE_GBP_CENTS, '€', 'eur'),
+        aud: _mkPrice(BASE_GBP_CENTS, 'A$', 'aud'),
+        jpy: _mkPrice(BASE_GBP_CENTS, '¥', 'jpy'),
+    };
+
+    const PRI_GBP_CENTS = BASE_GBP_CENTS * 2.25; // priority multiplier
+    const PRIORITY_PRICES = {
+        gbp: { amount: Math.round(PRI_GBP_CENTS), symbol: '£', display: `£${Math.round(PRI_GBP_CENTS/100)}` },
+        usd: _mkPrice(PRI_GBP_CENTS, '$', 'usd'),
+        eur: _mkPrice(PRI_GBP_CENTS, '€', 'eur'),
+        aud: _mkPrice(PRI_GBP_CENTS, 'A$', 'aud'),
+        jpy: _mkPrice(PRI_GBP_CENTS, '¥', 'jpy'),
+    };
+
+    function currentPriceDisplay() {
+        const pmap = selectedTier === 'priority' ? PRIORITY_PRICES : PRICES;
+        return pmap[selectedCurrency].display;
+    }
+
+    function changeCurrency(curr) {
+        selectedCurrency = curr;
+        const p = PRICES[curr];
+        document.getElementById('price-display').innerHTML = `${currentPriceDisplay()} <small>${tt('index.price_bar.flat_fee','flat fee')}</small>`;
+        document.getElementById('pay-btn').textContent = tt('index.s4.pay_button','Pay {price} - Catch it!').replace('{price}', currentPriceDisplay());
+        // Update USP badge
+        const uspEl = document.getElementById('usp-price');
+        if (uspEl) uspEl.textContent = `${p.display} ${tt('index.trust.flat_fee','flat fee')}`;
+        // Refresh tier selector prices
+        refreshTierDisplay();
+        // Re-render summary so the total updates too
+        if (document.getElementById('summary')) {
+            try { buildSummary(); } catch (e) { /* summary not visible yet */ }
+        }
+    }
+
+    function selectTier(tier) {
+        selectedTier = tier;
+        // Toggle card highlights
+        document.querySelectorAll('.tier-card').forEach(el => el.classList.remove('selected'));
+        const chosen = document.getElementById(`tier-card-${tier}`);
+        if (chosen) chosen.classList.add('selected');
+        // Update the pay button and summary with new price
+        const display = currentPriceDisplay();
+        document.getElementById('pay-btn').textContent = tt('index.s4.pay_button','Pay {price} - Catch it!').replace('{price}', display);
+        const priceEl = document.getElementById('price-display');
+        if (priceEl) priceEl.innerHTML = `${display} <small>${tt('index.price_bar.flat_fee','flat fee')}</small>`;
+        // Re-render the summary so it shows the new tier and price
+        if (document.getElementById('summary')) {
+            try { buildSummary(); } catch (e) { /* summary not visible yet */ }
+        }
+    }
+
+    function refreshTierDisplay() {
+        const stdPriceEl = document.getElementById('tier-price-standard');
+        const priPriceEl = document.getElementById('tier-price-priority');
+        if (stdPriceEl) stdPriceEl.textContent = PRICES[selectedCurrency].display;
+        if (priPriceEl) priPriceEl.textContent = PRIORITY_PRICES[selectedCurrency].display;
+    }
+
+    // Press Enter in name/email fields to advance to step 2 (choose dates).
+    // Feels natural for users who don't want to reach for the mouse.
+    function handleFormEnter(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            // Move focus into the next field if user is on the name field,
+            // otherwise try to advance the step.
+            const nameEl = document.getElementById('customer_name');
+            const emailEl = document.getElementById('customer_email');
+            if (event.target === nameEl) {
+                // Enter on name field -> focus email field
+                emailEl.focus();
+            } else if (event.target === emailEl) {
+                // Enter on email field -> try to advance to step 2
+                goToStep(2);
+            }
+        }
+    }
+
+    // Use Japan time (JST) for all date logic since the cafe is in Japan.
+    // 2026-05-11: removed 10pm-JST gating. That cutoff is the cafe's
+    // customer-cancellation deadline (existing bookers can only cancel
+    // via the website until 22:00 JST the day before; after that they
+    // must call the cafe). It does NOT mean new bookings can't be made.
+    // Our scanner runs 24/7 and will catch any cancellation, including
+    // last-minute phone cancellations made on the day. So minDate is
+    // simply "tomorrow JST" regardless of the hour. Customer auto-refunds
+    // if no slot found by their requested date.
+    const jstNow = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
+    const jstToday = new Date(jstNow.getFullYear(), jstNow.getMonth(), jstNow.getDate());
+
+    const minDate = new Date(jstToday);
+    minDate.setDate(minDate.getDate() + 1); // Tomorrow JST is the earliest bookable date
+    calMonth = minDate.getMonth();
+    calYear = minDate.getFullYear();
+
+    // Tokyo is the default cafe and only reopens June 17, 2026 after its
+    // renovation. Start the calendar on the reopening month so the default
+    // view is not an empty pre-June calendar. This mirrors the same jump
+    // selectLocation() does when a user switches to Tokyo. Osaka, when the
+    // user picks it, keeps the normal tomorrow-JST start (selectLocation
+    // clears the date selection and re-renders).
+    if (selectedLocation === 'tokyo') {
+        const reopen = new Date(2026, 5, 17); // month is 0-indexed (5=June)
+        if (calYear < reopen.getFullYear() ||
+            (calYear === reopen.getFullYear() && calMonth < reopen.getMonth())) {
+            calYear = reopen.getFullYear();
+            calMonth = reopen.getMonth();
+        }
+    }
+
+    // Tokyo time slots, post-renovation schedule. 6 sessions per day, 4 zones
+    // per session, 110 min between session starts (90 min seating + 20 min
+    // turnover). Verified against the live cafe slot grid as visible on
+    // competitor sites. Will re-verify once reserve.pokemon-cafe.jp publishes
+    // the renovated Tokyo grid (closer to May 17 release).
+    const TOKYO_SLOTS = [
+        { time: '10:40', zone: 'A' }, { time: '10:55', zone: 'B' }, { time: '11:10', zone: 'C' }, { time: '11:25', zone: 'D' },
+        { time: '12:30', zone: 'A' }, { time: '12:45', zone: 'B' }, { time: '13:00', zone: 'C' }, { time: '13:15', zone: 'D' },
+        { time: '14:20', zone: 'A' }, { time: '14:35', zone: 'B' }, { time: '14:50', zone: 'C' }, { time: '15:05', zone: 'D' },
+        { time: '16:10', zone: 'A' }, { time: '16:25', zone: 'B' }, { time: '16:40', zone: 'C' }, { time: '16:55', zone: 'D' },
+        { time: '18:00', zone: 'A' }, { time: '18:15', zone: 'B' }, { time: '18:30', zone: 'C' }, { time: '18:45', zone: 'D' },
+        { time: '19:50', zone: 'A' }, { time: '20:05', zone: 'B' }, { time: '20:20', zone: 'C' }, { time: '20:35', zone: 'D' },
+    ];
+
+    const OSAKA_SLOTS = [
+        { time: '10:30', zone: 'A' }, { time: '10:45', zone: 'B' }, { time: '11:00', zone: 'C' },
+        { time: '12:00', zone: 'A' }, { time: '12:15', zone: 'B' }, { time: '12:30', zone: 'C' },
+        { time: '13:00', zone: 'A' }, { time: '13:15', zone: 'B' }, { time: '13:30', zone: 'C' },
+        { time: '14:00', zone: 'A' }, { time: '14:15', zone: 'B' }, { time: '14:30', zone: 'C' },
+        { time: '15:00', zone: 'A' }, { time: '15:15', zone: 'B' }, { time: '16:00', zone: 'C' },
+        { time: '16:30', zone: 'A' }, { time: '17:00', zone: 'B' }, { time: '17:30', zone: 'C' },
+        { time: '18:00', zone: 'A' }, { time: '18:15', zone: 'B' }, { time: '18:30', zone: 'C' },
+        { time: '19:00', zone: 'A' }, { time: '19:30', zone: 'B' },
+    ];
+
+    function getTimeSlots() {
+        return selectedLocation === 'tokyo' ? TOKYO_SLOTS : OSAKA_SLOTS;
+    }
+
+    // Zone descriptions. Both cafes cap at 6 guests per reservation
+    // per the official cafe FAQ. The Tokyo TIME-SLOT grid we hold has
+    // 4 increments (A/B/C/D) per session but the SEAT TYPE mapping
+    // post-renovation has not been published yet; the previous
+    // "Pikachu window / Snorlax table / Eevee table / Lapras counter"
+    // labels were invented. Keeping neutral descriptions until the
+    // cafe publishes its real renovated layout (closer to May 17).
+    const ZONE_INFO = {
+        tokyo: {
+            A: 'Seating slot A',
+            B: 'Seating slot B',
+            C: 'Seating slot C',
+            D: 'Seating slot D',
+        },
+        osaka: {
+            A: 'Table seats (2-6)',
+            B: 'Table seats (2-6)',
+            C: 'Counter & table (1-6)',
+        },
+    };
+
+    function renderZoneLegend() {
+        const zones = ZONE_INFO[selectedLocation];
+        document.getElementById('zone-legend').innerHTML = Object.entries(zones).map(([z, desc]) =>
+            `<span><span class="mini-badge zone-${z}">${z}</span> ${desc}</span>`
+        ).join('');
+    }
+
+    // ---- NAVIGATION ----
+    function jumpToStep(step) {
+        // Only allow jumping to completed steps (steps before the current one)
+        if (step < currentStep) {
+            goToStep(step);
+        }
+    }
+
+    function goToStep(step) {
+        // Validate current step
+        if (step > currentStep) {
+            if (currentStep === 1 && !validateStep1()) return;
+            if (currentStep === 2 && !validateStep2()) return;
+            if (currentStep === 3 && !validateStep3()) return;
+        }
+
+        currentStep = step;
+
+        // Update panels
+        document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(`panel-${step}`).classList.add('active');
+
+        // Update stepper
+        for (let i = 1; i <= 4; i++) {
+            const circle = document.getElementById(`step-circle-${i}`);
+            circle.className = 'step-circle ' + (i < step ? 'completed' : i === step ? 'active' : 'inactive');
+            if (i < step) circle.innerHTML = '&#10003;';
+            else circle.textContent = i;
+
+            if (i < 4) {
+                document.getElementById(`step-line-${i}`).className = 'step-line' + (i < step ? ' completed' : '');
+            }
+        }
+
+        document.getElementById('bar-step-info').textContent = tt('index.step_indicator','Step {n} of 4').replace('{n}', step);
+
+        // Hide sticky price-bar on step 4 (review card already shows the
+        // tier + price; price-bar was clipping the Standard tier card on
+        // mobile per the 2026-05-12 visual audit).
+        document.body.classList.toggle('on-step-4', step === 4);
+
+        // Build summary on step 4
+        if (step === 4) buildSummary();
+
+        document.querySelector('.stepper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function validateStep1() {
+        const name = document.getElementById('customer_name').value.trim();
+        const email = document.getElementById('customer_email').value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // Name validation: accepts Latin, CJK, Japanese, Korean characters.
+        // Pokemon Cafe's server generates furigana from the name. Latin names
+        // get auto-converted to katakana. CJK/Japanese names work natively.
+        // Reject digits, most symbols, and very short names.
+        const latinOnly = /^[a-zA-Z\s\-']+$/.test(name);
+        const hasDigitsOrBadSymbols = /[0-9@#$%^&*=+<>{}[\]|\\\/~`]/.test(name);
+        if (!name || name.length < 2) {
+            document.getElementById('step1-error').textContent = tt('index.js.err_name','Please enter your name');
+            document.getElementById('step1-error').style.display = 'block';
+            return false;
+        }
+        if (name.length > 50) {
+            document.getElementById('step1-error').textContent = tt('index.js.err_name_long','Name must be under 50 characters');
+            document.getElementById('step1-error').style.display = 'block';
+            return false;
+        }
+        if (hasDigitsOrBadSymbols) {
+            document.getElementById('step1-error').textContent = tt('index.js.err_name_chars','Name can only contain letters, spaces, hyphens and apostrophes (no numbers or symbols).');
+            document.getElementById('step1-error').style.display = 'block';
+            return false;
+        }
+        // For Latin-only names, reject gibberish (real names have at least one vowel)
+        if (latinOnly && !/[aeiou]/i.test(name)) {
+            document.getElementById('step1-error').textContent = tt('index.js.err_name_real',"Please enter your real name. You'll need to give this name at the cafe entrance.");
+            document.getElementById('step1-error').style.display = 'block';
+            return false;
+        }
+        if (!email || !emailRegex.test(email)) {
+            document.getElementById('step1-error').textContent = tt('index.js.err_email','Please enter a valid email address');
+            document.getElementById('step1-error').style.display = 'block';
+            return false;
+        }
+        if (!selectedLocation) {
+            document.getElementById('step1-error').textContent = tt('index.js.err_location','Please select a location');
+            document.getElementById('step1-error').style.display = 'block';
+            return false;
+        }
+        document.getElementById('step1-error').style.display = 'none';
+        return true;
+    }
+
+    function validateStep2() {
+        if (selectedDates.length === 0) {
+            document.getElementById('step2-error').style.display = 'block';
+            return false;
+        }
+        document.getElementById('step2-error').style.display = 'none';
+        return true;
+    }
+
+    function validateStep3() {
+        if (selectedTimes.size === 0) {
+            document.getElementById('step3-error').style.display = 'block';
+            return false;
+        }
+        document.getElementById('step3-error').style.display = 'none';
+        return true;
+    }
+
+    // ---- LOCATION ----
+    function selectLocation(el) {
+        document.querySelectorAll('.location-card').forEach(c => c.classList.remove('selected'));
+        el.classList.add('selected');
+        selectedLocation = el.dataset.loc;
+        selectedTimes.clear();
+        selectedDates = [];  // clear date selection — Tokyo and Osaka have
+                             // different valid date ranges, so the previously
+                             // picked date may not be valid for the new cafe.
+        // Clamp guest count to the new cafe's max (Osaka 6, Tokyo 8). Without
+        // this you could pick 8 on Tokyo, switch to Osaka, and the backend
+        // would reject only AT checkout with "Party size must be 1-6" — bad UX.
+        const maxGuests = 6;  // both cafes cap reservations at 6
+        if (guestCount > maxGuests) {
+            guestCount = maxGuests;
+            const guestEl = document.getElementById('guest-count');
+            if (guestEl) guestEl.textContent = guestCount;
+        }
+        allDayMode = false;
+        // Reset the displayed calendar month to the new cafe's EARLIEST
+        // bookable month. The previous code only ever pushed the calendar
+        // FORWARD to Tokyo's June reopening and never rolled it back, so
+        // switching Tokyo -> Osaka left the calendar stuck on June even
+        // though Osaka is open now (May). Recompute from scratch so both
+        // switch directions land correctly. Mirrors the page-init logic.
+        const swMin = new Date(jstToday);
+        swMin.setDate(swMin.getDate() + 1); // tomorrow JST = earliest bookable
+        calMonth = swMin.getMonth();
+        calYear = swMin.getFullYear();
+        // Tokyo dates start June 17, 2026 — jump the calendar to that month
+        // so Tokyo users don't see an empty pre-June calendar. Osaka keeps
+        // the normal tomorrow-JST (current month) start.
+        if (selectedLocation === 'tokyo') {
+            const reopen = new Date(2026, 5, 17); // month is 0-indexed (5=June)
+            if (calYear < reopen.getFullYear() ||
+                (calYear === reopen.getFullYear() && calMonth < reopen.getMonth())) {
+                calYear = reopen.getFullYear();
+                calMonth = reopen.getMonth();
+            }
+        }
+        renderZoneLegend();
+        selectTimePref(selectedTimePref);
+        renderCalendar();
+        renderDateChips();
+        updateTimePrefRanges();
+        // Toggle seat maps
+        document.getElementById('seatmap-osaka').style.display = selectedLocation === 'osaka' ? 'block' : 'none';
+        document.getElementById('seatmap-tokyo').style.display = selectedLocation === 'tokyo' ? 'block' : 'none';
+    }
+
+    // Refresh the "Before 14:00 / After 14:00" descriptions so they match
+    // the currently selected cafe's slot grid. Tokyo runs longer (last slot
+    // 20:35) so the static "to 19:30" line that worked for Osaka was wrong.
+    function updateTimePrefRanges() {
+        const slots = getTimeSlots();
+        const before = slots.filter(s => s.time < '14:00');
+        const after = slots.filter(s => s.time >= '14:00');
+        const beforeRange = before.length
+            ? `${before[0].time} to ${before[before.length - 1].time}`
+            : '';
+        const afterRange = after.length
+            ? `${after[0].time} to ${after[after.length - 1].time}`
+            : '';
+        const beforeEl = document.getElementById('pref-desc-before14');
+        const afterEl = document.getElementById('pref-desc-after14');
+        if (beforeEl) beforeEl.textContent = `${tt('index.js.lunch','Lunch')} ${beforeRange}`;
+        if (afterEl) afterEl.textContent = `${tt('index.js.afternoon','Afternoon/dinner')} ${afterRange}`;
+    }
+
+    // Tokyo Pokemon Cafe reopens 2026-06-17 after renovation. Block earlier
+    // dates in the calendar when Tokyo is selected. Keep in sync with the
+    // backend constant _tokyo_reopen_date() in app.py.
+    const TOKYO_REOPEN_DATE = new Date(2026, 5, 17); // 0-indexed month
+
+    // ---- GUESTS ----
+    function changeGuests(delta) {
+        const maxGuests = 6;  // both cafes cap reservations at 6
+        guestCount = Math.max(1, Math.min(maxGuests, guestCount + delta));
+        document.getElementById('guest-count').textContent = guestCount;
+    }
+
+    // ---- DATE MODE ----
+    function setDateMode(mode) {
+        dateMode = mode;
+        selectedDates = [];
+        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        renderCalendar();
+        renderDateChips();
+    }
+
+    // ---- CALENDAR ----
+    function renderCalendar() {
+        const grid = document.getElementById('cal-grid');
+        // Use locale-aware month names so the calendar header matches the
+        // active language without us hard-coding two lists.
+        const monthDate = new Date(calYear, calMonth, 1);
+        const monthName = monthDate.toLocaleDateString(DATE_LOCALE, { month: 'long' });
+        const capMonth = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+        document.getElementById('month-year').textContent = `${capMonth} ${calYear}`;
+
+        let html = '';
+        const dows = LANG === 'es'
+            ? ['Lu','Ma','Mi','Ju','Vi','Sa','Do']
+            : ['Mo','Tu','We','Th','Fr','Sa','Su'];
+        dows.forEach(d => html += `<div class="cal-dow">${d}</div>`);
+
+        const firstDay = new Date(calYear, calMonth, 1).getDay();
+        const startDay = firstDay === 0 ? 6 : firstDay - 1; // Monday start
+        const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+        for (let i = 0; i < startDay; i++) {
+            html += '<div class="cal-day empty"></div>';
+        }
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // Osaka cafe closure dates. Auto-detected daily by
+        // scripts/cafe_closure_scraper.py from the cafe homepage banner;
+        // server passes them via [&#39;2026-06-08&#39;, &#39;2026-06-09&#39;, &#39;2026-06-10&#39;, &#39;2026-06-11&#39;, &#39;2026-06-12&#39;, &#39;2026-06-13&#39;, &#39;2026-06-14&#39;, &#39;2026-06-15&#39;, &#39;2026-06-16&#39;]. Falls back to
+        // hardcoded list if context is missing (e.g., old template cache).
+        const CLOSED_DATES = new Set(["2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-13", "2026-06-14", "2026-06-15", "2026-06-16"]);
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const d = new Date(calYear, calMonth, day);
+            const dateStr = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+            const isSelected = selectedDates.includes(dateStr);
+            const isPast = d < minDate;
+            // Closure logic depends on which cafe is selected:
+            // - Osaka: closed during the June 8-16 menu update (CLOSED_DATES set)
+            // - Tokyo: closed until June 17, 2026 reopening
+            const isClosed = selectedLocation === 'tokyo'
+                ? d < TOKYO_REOPEN_DATE
+                : CLOSED_DATES.has(dateStr);
+
+            // Estimated availability based on real Pokemon Cafe booking patterns:
+            // Weekends/Fridays are hardest, weekdays easier, further out = better chance
+            let availClass = '';
+            if (!isPast && !isClosed) {
+                const dow = d.getDay(); // 0=Sun, 6=Sat
+                const daysOut = Math.floor((d - new Date()) / (1000*60*60*24));
+                const isWeekend = dow === 0 || dow === 6;
+                const isFriday = dow === 5;
+
+                if (isWeekend) {
+                    availClass = daysOut > 20 ? 'avail-med' : 'avail-low';
+                } else if (isFriday) {
+                    availClass = daysOut > 25 ? 'avail-med' : 'avail-low';
+                } else {
+                    if (daysOut > 25) availClass = 'avail-high';
+                    else if (daysOut > 15) availClass = 'avail-med';
+                    else availClass = 'avail-low';
+                }
+            }
+
+            const isToday = d.getTime() === jstToday.getTime();
+
+            if (isPast) {
+                html += `<div class="cal-day disabled ${isToday ? 'today-marker' : ''}">${isToday ? `<span class="today-label">${tt('index.js.today','Today')}</span>` : ''}${day}</div>`;
+            } else if (isClosed) {
+                const closeTitle = selectedLocation === 'tokyo'
+                    ? tt('index.js.tokyo_reopens','Tokyo cafe reopens June 17, 2026')
+                    : tt('index.js.osaka_closed','Cafe closed for menu update (June 8-16)');
+                const closeLabel = selectedLocation === 'tokyo'
+                    ? tt('index.js.renovation','Renovation')
+                    : tt('index.js.closed','Closed');
+                const closeAria = `${day} ${closeTitle}`;
+                html += `<div class="cal-day disabled closed-renovation" title="${closeTitle}" aria-label="${closeAria}"><span class="d">${day}</span><span class="closed-label">${closeLabel}</span></div>`;
+            } else {
+                html += `<div class="cal-day available ${isSelected ? 'selected' : ''} ${isToday ? 'today-marker' : ''}" onclick="selectDate('${dateStr}')" data-date="${dateStr}">
+                    ${isToday ? `<span class="today-label">${tt('index.js.today','Today')}</span>` : ''}
+                    ${day}
+                    <span class="avail-bar ${availClass}"></span>
+                </div>`;
+            }
+        }
+
+        grid.innerHTML = html;
+    }
+
+    function changeMonth(delta) {
+        calMonth += delta;
+        if (calMonth > 11) { calMonth = 0; calYear++; }
+        if (calMonth < 0) { calMonth = 11; calYear--; }
+        renderCalendar();
+    }
+
+    function selectDate(dateStr) {
+        if (dateMode === 'exact') {
+            selectedDates = [dateStr];
+        } else {
+            const idx = selectedDates.indexOf(dateStr);
+            if (idx > -1) {
+                selectedDates.splice(idx, 1);
+            } else if (selectedDates.length < 3) {
+                selectedDates.push(dateStr);
+            } else {
+                // UX U5: cap at 3 was silent — clicking the 4th date used to
+                // do literally nothing. Surface a toast so the user knows.
+                if (typeof showToast === 'function') {
+                    showToast(tt('index.js.max_dates','You can pick up to 3 dates. Remove one to swap.'));
+                }
+                return;
+            }
+        }
+        document.getElementById('step2-error').style.display = 'none';
+        renderCalendar();
+        renderDateChips();
+    }
+
+    function renderDateChips() {
+        const container = document.getElementById('selected-dates');
+        if (selectedDates.length === 0) {
+            container.innerHTML = `<span style="color:#999;font-size:0.8rem;">${tt('index.s2.no_dates','No dates selected')}</span>`;
+            return;
+        }
+        container.innerHTML = selectedDates.map(d => {
+            const date = new Date(d + 'T00:00:00');
+            const formatted = date.toLocaleDateString(DATE_LOCALE, { weekday: 'short', day: 'numeric', month: 'short' });
+            return `<div class="date-chip">${formatted} <span class="remove" onclick="removeDate('${d}')">&#215;</span></div>`;
+        }).join('');
+    }
+
+    function removeDate(dateStr) {
+        selectedDates = selectedDates.filter(d => d !== dateStr);
+        renderCalendar();
+        renderDateChips();
+    }
+
+    // ---- TIME PREFERENCE ----
+    let selectedTimePref = 'anytime';
+
+    function selectTimePref(pref) {
+        selectedTimePref = pref;
+        document.querySelectorAll('.time-pref-card').forEach(c => c.classList.remove('selected'));
+        document.querySelector(`.time-pref-card[data-pref="${pref}"]`).classList.add('selected');
+
+        // Set the actual times based on preference
+        selectedTimes.clear();
+        const slots = getTimeSlots();
+        if (pref === 'anytime') {
+            slots.forEach(s => selectedTimes.add(s.time));
+        } else if (pref === 'before14') {
+            slots.filter(s => parseInt(s.time) < 14).forEach(s => selectedTimes.add(s.time));
+        } else if (pref === 'after14') {
+            slots.filter(s => parseInt(s.time) >= 14).forEach(s => selectedTimes.add(s.time));
+        }
+        document.getElementById('step3-error').style.display = 'none';
+    }
+
+    // Initialize with "anytime" selected
+    selectTimePref('anytime');
+
+    // ---- SUMMARY ----
+    // Estimated date the cafe releases the customer's preferred date — that's
+    // when our bot fires the wave for them and they should expect to hear
+    // back with either a confirmation or "still searching". Mirrors the same
+    // expectation-setting line Pablo's site shows.
+    //
+    //   Default cafe rule: release_date = reservation_date - 31 days at 18:00 JST.
+    //   Exception 1 (Tokyo mass release): for Tokyo dates in 2026-06-17 to
+    //     2026-07-07, the cafe drops all 21 days in one event at 2026-05-17
+    //     18:00 JST. So release_date = 2026-05-17 regardless of which day in
+    //     that window the customer picked.
+    //   Exception 2 (already past the release date): if today is on/after the
+    //     release date, the wave has already fired and we're now in
+    //     cancellation-scanning mode, so we show "we're trying now" instead.
+    function estimateReleaseDateLabel(isoDate) {
+        const reserved = new Date(isoDate + 'T00:00:00');
+        let release = new Date(reserved);
+        release.setDate(release.getDate() - 31);
+        if (selectedLocation === 'tokyo') {
+            const tokyoMassStart = new Date(2026, 5, 17); // Jun 17
+            const tokyoMassEnd = new Date(2026, 6, 7);    // Jul 7
+            if (reserved >= tokyoMassStart && reserved <= tokyoMassEnd) {
+                release = new Date(2026, 4, 17); // May 17 mass release
+            }
+        }
+        const todayJst = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
+        todayJst.setHours(0,0,0,0);
+        if (release <= todayJst) {
+            return tt('index.summary.searching_now','actively scanning for slots now');
+        }
+        return release.toLocaleDateString(DATE_LOCALE, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    function buildSummary() {
+        const dates = selectedDates.map(d => {
+            const date = new Date(d + 'T00:00:00');
+            return date.toLocaleDateString(DATE_LOCALE, { weekday: 'short', day: 'numeric', month: 'short' });
+        }).join(', ');
+
+        // First (earliest) preferred date drives the headline confirmation
+        // estimate. If they picked multiple dates we still surface the
+        // earliest opportunity because that's when they'll first hear back.
+        const earliestDate = [...selectedDates].sort()[0];
+        const releaseLabel = earliestDate ? estimateReleaseDateLabel(earliestDate) : '';
+        const isSearchingNow = releaseLabel === tt('index.summary.searching_now','searching for cancellations now');
+
+        const prefLabels = {
+            anytime: tt('index.summary.pref_anytime','Any time (best chance)'),
+            before14: tt('index.summary.pref_before14','Before 14:00 (lunch)'),
+            after14: tt('index.summary.pref_after14','After 14:00 (afternoon/dinner)'),
+        };
+        const tierLabel = selectedTier === 'priority'
+            ? tt('index.summary.tier_priority_long','Priority (queue first)')
+            : tt('index.s4.tier_standard','Standard');
+        const priceStr = currentPriceDisplay();
+        const dateColLabel = selectedDates.length > 1
+            ? tt('index.summary.dates','Dates')
+            : tt('index.summary.date','Date');
+        const locationLabel = selectedLocation === 'tokyo'
+            ? tt('index.summary.tokyo_label','Tokyo (Nihonbashi)')
+            : tt('index.summary.osaka_label','Osaka (Shinsaibashi)');
+
+        document.getElementById('summary').innerHTML = `
+            <div class="summary-row"><span class="label">${tt('index.summary.location','Location')}</span><span class="value">${locationLabel}</span></div>
+            <div class="summary-row"><span class="label">${tt('index.summary.guests','Guests')}</span><span class="value">${guestCount}</span></div>
+            <div class="summary-row"><span class="label">${dateColLabel}</span><span class="value">${dates}</span></div>
+            <div class="summary-row"><span class="label">${tt('index.summary.time_pref','Time preference')}</span><span class="value">${prefLabels[selectedTimePref]}</span></div>
+            <div class="summary-row"><span class="label">${tt('index.summary.name','Name')}</span><span class="value" id="summary-name"></span></div>
+            <div class="summary-row"><span class="label">${tt('index.summary.email','Email')}</span><span class="value" id="summary-email"></span></div>
+            <div class="summary-row"><span class="label">${tt('index.summary.tier','Tier')}</span><span class="value">${tierLabel}</span></div>
+            ${releaseLabel ? `<div style="background:#fff8e1;border:1px dashed #ffcb05;padding:12px 14px;border-radius:10px;margin-top:12px;">
+                <div class="summary-row" style="padding:0;border:none;margin-bottom:6px;"><span class="label" style="font-weight:700;">${isSearchingNow ? tt('index.summary.status_label','Status') : tt('index.summary.first_attempt','First booking attempt')}</span><span class="value" style="color:var(--poke-blue);">${releaseLabel}${isSearchingNow ? '' : ' &middot; 18:00 JST'}</span></div>
+                <div style="font-size:0.78rem;color:#555;line-height:1.5;">${isSearchingNow
+                    ? tt('index.summary.scanning_blurb',"Our bot is scanning for available slots every few minutes. As soon as one opens up, we grab it and send you a confirmation email. We keep trying right up to your date. If we can't get it, full automatic refund.")
+                    : tt('index.summary.wave_blurb',"That's when the cafe drops your date. If we win the wave: confirmation email within ~5 min. If sold out: we keep scanning every few minutes for cancellation slots. If we still can't book it, full automatic refund.")
+                }</div>
+            </div>` : ''}
+            <div class="summary-total"><span class="label">${tt('index.summary.total','Total')}</span><span class="value">${priceStr} ${tt('index.summary.flat','flat')}</span></div>
+        `;
+        // Set user input via textContent to prevent XSS
+        document.getElementById('summary-name').textContent = document.getElementById('customer_name').value;
+        document.getElementById('summary-email').textContent = document.getElementById('customer_email').value;
+    }
+
+    // ---- SUBMIT ----
+    async function submitBooking() {
+        const btn = document.getElementById('pay-btn');
+        btn.disabled = true;
+        btn.innerHTML = `<span class="spinner"></span> ${tt('index.js.redirecting','Redirecting to payment...')}`;
+
+        try {
+            if (localStorage.getItem('last_booking_date') === selectedDates[0]) {
+                if (!confirm(tt('index.js.already_booked','You already have a booking for this date. Book again?'))) {
+                    btn.disabled = false;
+                    btn.textContent = tt('index.s4.pay_button','Pay {price} - Catch it!').replace('{price}', currentPriceDisplay());
+                    return;
+                }
+            }
+
+            const res = await fetch('/api/create-checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    customer_name: document.getElementById('customer_name').value,
+                    customer_email: document.getElementById('customer_email').value,
+                    location: selectedLocation,
+                    preferred_date: selectedDates.join(','),
+                    party_size: guestCount,
+                    preferred_times: Array.from(selectedTimes).join(','),
+                    currency: selectedCurrency,
+                    tier: selectedTier,
+                    // Task #250: optional attribution. ?.value || '' so a
+                    // missing element can never throw — these are purely
+                    // additive and the backend treats absent/empty as NULL.
+                    acquisition_source: document.getElementById('acquisition_source')?.value || '',
+                    utm_source: document.getElementById('utm_source')?.value || '',
+                    utm_medium: document.getElementById('utm_medium')?.value || '',
+                    utm_campaign: document.getElementById('utm_campaign')?.value || '',
+                    referrer: document.getElementById('acq_referrer')?.value || '',
+                }),
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data.detail || tt('index.js.generic_error','Something went wrong'));
+            }
+            if (data.checkout_url) {
+                localStorage.setItem('last_booking_date', selectedDates[0]);
+                // GA conversion tracking
+                if (typeof gtag === 'function') {
+                    gtag('event', 'begin_checkout', {
+                        currency: selectedCurrency.toUpperCase(),
+                        value: PRICES[selectedCurrency].amount / 100,
+                        items: [{item_name: 'Pokemon Cafe Reservation', item_category: selectedTier}],
+                    });
+                }
+                // Meta Pixel: InitiateCheckout
+                if (typeof fbq === 'function') {
+                    fbq('track', 'InitiateCheckout', {
+                        value: PRICES[selectedCurrency].amount / 100,
+                        currency: selectedCurrency.toUpperCase(),
+                        content_name: 'Pokemon Cafe Reservation',
+                    });
+                }
+                window.location.href = data.checkout_url;
+            } else {
+                throw new Error(tt('index.js.no_checkout','No checkout URL received'));
+            }
+        } catch (err) {
+            alert(err.message || tt('index.js.generic_error','Something went wrong. Please try again.'));
+            btn.disabled = false;
+            btn.textContent = tt('index.s4.pay_button','Pay {price} - Catch it!').replace('{price}', currentPriceDisplay());
+        }
+    }
+
+    // ---- TERMS CHECKBOX ----
+    function updatePayBtn() {
+        document.getElementById('pay-btn').disabled = !document.getElementById('terms-agree').checked;
+    }
+
+    // ---- INIT ----
+    // Auto-detect currency — TIMEZONE FIRST (more reliable than language,
+    // e.g. UK users often have their Mac set to "English (US)" but live in London)
+    function detectCurrency() {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        const lang = (navigator.language || 'en-GB').toLowerCase();
+
+        // --- Timezone signals (strong, physical location) ---
+        if (tz === 'Europe/London' || tz === 'Europe/Isle_of_Man' || tz === 'Europe/Jersey' || tz === 'Europe/Guernsey') return 'gbp';
+        if (tz === 'Asia/Tokyo') return 'jpy';
+        if (tz.startsWith('Australia/') || tz === 'Pacific/Auckland') return 'aud';
+        const eurTZs = [
+            'Europe/Paris', 'Europe/Berlin', 'Europe/Madrid', 'Europe/Rome',
+            'Europe/Amsterdam', 'Europe/Brussels', 'Europe/Vienna', 'Europe/Helsinki',
+            'Europe/Lisbon', 'Europe/Athens', 'Europe/Dublin', 'Europe/Luxembourg',
+            'Europe/Prague', 'Europe/Warsaw', 'Europe/Zagreb', 'Europe/Bratislava',
+            'Europe/Ljubljana', 'Europe/Tallinn', 'Europe/Riga', 'Europe/Vilnius',
+            'Europe/Malta', 'Europe/Stockholm', 'Europe/Copenhagen', 'Europe/Oslo',
+        ];
+        if (eurTZs.some(t => tz === t || tz.startsWith(t))) return 'eur';
+        if (tz.startsWith('America/')) return 'usd';
+
+        // --- Language fallback (only if timezone didn't classify) ---
+        if (lang === 'en-gb' || lang.includes('-gb') || lang.includes('-uk')) return 'gbp';
+        if (lang.startsWith('ja')) return 'jpy';
+        if (lang.includes('-au') || lang === 'en-au') return 'aud';
+        const eurLangs = ['fr', 'de', 'es', 'it', 'nl', 'pt', 'el', 'fi', 'sk', 'sl', 'et', 'lv', 'lt', 'mt', 'da', 'sv', 'no'];
+        if (eurLangs.some(l => lang.startsWith(l))) return 'eur';
+        if (lang === 'en-us' || lang.includes('-us') || lang === 'en-ca' || lang.includes('-ca')) return 'usd';
+
+        // Default: GBP (home currency)
+        return 'gbp';
+    }
+    changeCurrency(detectCurrency());
+    document.getElementById('currency-select').value = selectedCurrency;
+    refreshTierDisplay();
+
+    renderCalendar();
+    renderDateChips();
+    renderZoneLegend();
+
+    // Task #250: capture optional attribution from the landing URL +
+    // document.referrer into hidden inputs. Fully wrapped in try/catch so
+    // a malformed URL or sandboxed referrer can NEVER throw and break
+    // page init or the booking flow. Analytics only.
+    try {
+        const _p = new URLSearchParams(window.location.search || '');
+        const _set = (id, val) => {
+            const el = document.getElementById(id);
+            if (el && val) el.value = String(val).slice(0, 255);
+        };
+        _set('utm_source', _p.get('utm_source'));
+        _set('utm_medium', _p.get('utm_medium'));
+        _set('utm_campaign', _p.get('utm_campaign'));
+        _set('acq_referrer', document.referrer || '');
+    } catch (e) { /* never block the form on attribution capture */ }
+
+    // No dynamic urgency text - keep the default tagline
+</script>
+
+<!-- Cookie Consent Banner (EEA + fallback for all visitors) -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1b3a;color:#fff;padding:14px 20px;z-index:9999;font-size:0.85rem;line-height:1.5;box-shadow:0 -2px 12px rgba(0,0,0,0.15);">
+    <div style="max-width:600px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <p style="margin:0;flex:1;min-width:200px;">We use cookies for analytics and to improve your experience. <a href="/cafesnap-preview/terms.html" style="color:#ffcb05;text-decoration:underline;">Learn more</a></p>
+        <div style="display:flex;gap:8px;flex-shrink:0;">
+            <button onclick="acceptCookies()" style="background:#ffcb05;color:#1a1b3a;border:none;padding:10px 20px;border-radius:8px;font-weight:800;font-size:0.85rem;cursor:pointer;min-height:44px;font-family:'Nunito',sans-serif;">Accept</button>
+            <button onclick="declineCookies()" style="background:transparent;color:#aaa;border:1px solid #555;padding:10px 16px;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;min-height:44px;font-family:'Nunito',sans-serif;">Decline</button>
+        </div>
+    </div>
+</div>
+<script>
+(function(){
+    var consent = localStorage.getItem('cafesnap_consent');
+    if(!consent){document.getElementById('cookie-banner').style.display='block';}
+})();
+function acceptCookies(){
+    localStorage.setItem('cafesnap_consent','granted');
+    gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
+    document.getElementById('cookie-banner').style.display='none';
+}
+function declineCookies(){
+    localStorage.setItem('cafesnap_consent','denied');
+    document.getElementById('cookie-banner').style.display='none';
+}
+</script>
+
+</body>
+</html>

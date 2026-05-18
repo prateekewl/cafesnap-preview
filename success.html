@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.gtag=function(){};window.dataLayer=window.dataLayer||[];</script>
+    <!-- Google Consent Mode v2 -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
+    if(localStorage.getItem('cafesnap_consent')==='granted'){gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});}
+    </script>
+    <script async src="about:blank" data-preview-disabled-analytics="1"></script>
+    <script>gtag('js',new Date());gtag('config','G-B1H9YKBDTN');</script>
+    
+    
+    <meta charset="UTF-8">
+    
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffcb05">
+    <title>You&#39;re In! - CafeSnap</title>
+    <link rel="icon" type="image/svg+xml" href="/cafesnap-preview/static/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/cafesnap-preview/static/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/cafesnap-preview/static/apple-touch-icon.png">
+    <meta name="robots" content="noindex">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --poke-yellow: #ffcb05;
+            --poke-yellow-light: #fff3b0;
+            --poke-red: #e3350d;
+            --poke-blue: #3b4cca;
+            --poke-blue-light: #6b7cff;
+            --poke-navy: #1a1b3a;
+            --poke-green: #22c55e;
+            --poke-green-dark: #16a34a;
+            --poke-cream: #fff8f0;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--poke-cream);
+            color: #333;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        /* ---- HEADER (matches index.html) ---- */
+        .header {
+            background: var(--poke-yellow);
+            padding: 18px 20px 14px;
+            min-height: 92px;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            border-radius: 0 0 28px 28px;
+            box-shadow: 0 4px 20px rgba(255,203,5,0.3);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 6px, transparent 6px);
+            background-size: 32px 32px;
+            border-radius: 0 0 28px 28px;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--poke-red), var(--poke-yellow), var(--poke-blue));
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+        .header h1 span { color: var(--poke-red); }
+        .header a { text-decoration: none; position: relative; }
+        .header .header-tagline {
+            font-size: 0.9rem;
+            color: rgba(26,27,58,0.6);
+            font-weight: 700;
+            margin-top: 2px;
+            position: relative;
+        }
+        .header .header-side {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        .header .header-side.right {
+            justify-content: flex-end;
+        }
+        .header .header-link {
+            color: var(--poke-navy);
+            opacity: 0.7;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        /* ---- LAYOUT ---- */
+        .container {
+            max-width: 560px;
+            margin: 24px auto 0;
+            padding: 0 16px;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid rgba(255,203,5,0.3);
+            box-shadow: 0 4px 24px rgba(255,203,5,0.15);
+            border-radius: 20px;
+            padding: 32px 24px;
+            margin-bottom: 20px;
+        }
+
+        /* ---- HERO: payment confirmation ---- */
+        .hero {
+            text-align: center;
+        }
+        .hero-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+            background: linear-gradient(135deg, var(--poke-green), var(--poke-green-dark));
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+        }
+        .hero-icon.error {
+            background: linear-gradient(135deg, #f59e0b, #dc2626);
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+        }
+        .hero h2 {
+            font-size: 1.55rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+        .hero .sub {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 22px;
+        }
+
+        .ref-box {
+            background: #f0fdf4;
+            border: 2px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 4px;
+            text-align: left;
+        }
+        .ref-box .ref-label {
+            font-size: 0.75rem;
+            color: #2e7d32;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .ref-box .ref-id {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .ref-box .copy-btn {
+            font-size: 0.7rem;
+            padding: 5px 10px;
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            color: #2e7d32;
+            font-weight: 700;
+        }
+        .ref-box .ref-meta {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 6px;
+        }
+        .pending-box {
+            background: #fff8e1;
+            border: 2px solid #ffe082;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: left;
+        }
+        .pending-box strong { color: #7c5c00; }
+        .pending-box a { color: #7c5c00; }
+
+        /* ---- SECTION HEADINGS ---- */
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .badge {
+            background: var(--poke-yellow);
+            color: var(--poke-navy);
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        /* ---- TIMELINE ---- */
+        .timeline {
+            background: var(--poke-cream);
+            border-radius: 14px;
+            padding: 20px 18px;
+        }
+        .tl-step {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+        .tl-step:last-child { margin-bottom: 0; }
+        .tl-dot {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 0.85rem;
+        }
+        .tl-step:nth-child(1) .tl-dot { background: var(--poke-red); }
+        .tl-step:nth-child(2) .tl-dot { background: var(--poke-blue); }
+        .tl-step:nth-child(3) .tl-dot { background: #f59e0b; color: var(--poke-navy); }
+        .tl-step:nth-child(4) .tl-dot { background: var(--poke-green); }
+        .tl-text {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.55;
+            padding-top: 3px;
+        }
+        .tl-text strong { color: var(--poke-navy); }
+
+        /* ---- WHEN-TO-EXPECT EMAIL ---- */
+        .email-eta {
+            background: #eff6ff;
+            border: 2px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 16px 18px;
+        }
+        .email-eta .eta-line {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .email-eta .eta-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+        .email-eta strong { color: var(--poke-navy); }
+        .email-eta p {
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.55;
+        }
+        .email-eta .eta-divider {
+            border: 0;
+            border-top: 1px dashed #bfdbfe;
+            margin: 12px 0;
+        }
+        .email-eta .eta-note {
+            font-size: 0.82rem;
+            color: #555;
+            line-height: 1.55;
+        }
+
+        /* ---- REFUND PROMISE ---- */
+        .refund-card {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid #86efac;
+            border-radius: 16px;
+            padding: 20px 20px;
+            text-align: left;
+        }
+        .refund-card .refund-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .refund-card .refund-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--poke-green);
+            color: white;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .refund-card h3 {
+            font-size: 1.05rem;
+            font-weight: 900;
+            color: #15803d;
+        }
+        .refund-card p {
+            font-size: 0.92rem;
+            color: #166534;
+            line-height: 1.55;
+        }
+
+        /* ---- DON'T DO LIST ---- */
+        .warn-card {
+            background: #fff1f2;
+            border: 2px solid #fecdd3;
+            border-radius: 16px;
+            padding: 20px 20px;
+        }
+        .warn-card h3 {
+            font-size: 1rem;
+            font-weight: 900;
+            color: #9f1239;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .warn-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .warn-card li {
+            font-size: 0.88rem;
+            color: #7f1d1d;
+            line-height: 1.55;
+            padding: 6px 0 6px 22px;
+            position: relative;
+        }
+        .warn-card li::before {
+            content: '\2715';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            color: var(--poke-red);
+            font-weight: 900;
+        }
+
+        /* ---- CONTACT ---- */
+        .contact-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 18px 20px;
+        }
+        .contact-card h3 {
+            font-size: 1rem;
+            font-weight: 900;
+            color: var(--poke-navy);
+            margin-bottom: 8px;
+        }
+        .contact-card p {
+            font-size: 0.88rem;
+            color: #555;
+            line-height: 1.55;
+            margin-bottom: 12px;
+        }
+        .contact-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.88rem;
+            border: 2px solid transparent;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .contact-btn:hover {
+            transform: translateY(-1px);
+        }
+        .contact-btn.telegram {
+            background: #229ED9;
+            color: white;
+        }
+        .contact-btn.email {
+            background: white;
+            color: var(--poke-navy);
+            border-color: #d4d4d8;
+        }
+
+        /* ---- BUTTONS ---- */
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .btn {
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+            padding: 14px 20px;
+            background: var(--poke-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(227, 53, 13, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--poke-red);
+            border: 2px solid var(--poke-red);
+        }
+
+        /* ---- SHARE ---- */
+        .share-card {
+            background: #f0f4ff;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .share-card p {
+            color: var(--poke-navy);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin: 0 0 10px;
+        }
+        .share-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            padding: 12px 18px;
+            min-height: 44px;
+            color: white;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+        }
+        .share-btn.whatsapp { background: #25D366; }
+        .share-btn.twitter { background: #1DA1F2; }
+        .share-btn.copy { background: #e8e8ee; color: var(--poke-navy); }
+
+        /* ---- MOBILE FINE-TUNING ---- */
+        @media (max-width: 480px) {
+            .header h1 { font-size: 1.4rem; }
+            .card { padding: 24px 18px; }
+            .hero h2 { font-size: 1.35rem; }
+            .section-title { font-size: 0.98rem; }
+            .ref-box .ref-id { font-size: 1.25rem; }
+            .btn { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div id="cafesnap-preview-ribbon" style="position:fixed;top:0;left:0;right:0;
+z-index:2147483647;background:#b91c1c;color:#fff;text-align:center;
+font:600 13px/1.45 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+padding:6px 10px;letter-spacing:.3px;pointer-events:none;
+box-shadow:0 1px 4px rgba(0,0,0,.35);">
+PREVIEW - visual only, not the live site
+</div>
+<div id="cafesnap-preview-spacer" style="height:30px;"></div>
+
+    <div class="header">
+        <div class="header-side" style="gap:8px;">
+            <a href="/?lang=es" style="color:var(--poke-navy);font-weight:800;font-size:0.78rem;text-decoration:none;opacity:0.7;position:relative;">ES</a>
+        </div>
+        <div>
+            <a href="/cafesnap-preview/index.html"><h1>Cafe<span>Snap</span></h1></a>
+            <p class="header-tagline">Pokemon Cafe reservations, sorted.</p>
+        </div>
+        <div class="header-side right">
+            <a href="/cafesnap-preview/status.html" class="header-link">Check booking</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+    
+        <!-- 1. PAYMENT CONFIRMATION + BOOKING REFERENCE -->
+        <div class="card hero">
+            <div class="hero-icon">&#10003;</div>
+            <h2>Payment received</h2>
+            <p class="sub">Your reservation request is queued and ready to go.</p>
+
+            
+            <div class="ref-box">
+                <div class="ref-label">Your booking reference</div>
+                <div class="ref-id">
+                    <span id="ref-id-text">#1234</span>
+                    <button class="copy-btn" onclick="navigator.clipboard.writeText('#1234');this.textContent='Copied!'">Copy</button>
+                </div>
+                
+                <div class="ref-meta">
+                    Sample Visitor
+                     &middot; 
+                    2026-06-20
+                </div>
+                
+            </div>
+            <p style="color:#888;font-size:0.8rem;line-height:1.5;margin:8px 0 0;">This is your CafeSnap reference for support and status lookups only. You do not show this at the cafe, just give your name.</p>
+            
+        </div>
+
+        <!-- 2. WHAT WE'LL DO NEXT (TIMELINE) -->
+        <div class="card">
+            <div class="section-title">
+                What happens next
+                <span class="badge">4 steps</span>
+            </div>
+            
+            <!-- Cancellation-catch: this date is already released and
+                 being actively scanned. There is NO upcoming release
+                 wave, so the "at 6 PM JST the next wave fires" timeline
+                 would be wrong and alarming (real customer #1999). Show
+                 the same scanning copy index.html uses pre-pay instead. -->
+            <div class="timeline">
+                <div class="tl-step">
+                    <div class="tl-dot">1</div>
+                    <div class="tl-text">
+                        Our bot is scanning for available slots every few minutes. As soon as one opens up, we grab it and send you a confirmation email. We keep trying right up to your date. If we can&#39;t get it, full automatic refund.
+                    </div>
+                </div>
+                <div class="tl-step">
+                    <div class="tl-dot">2</div>
+                    <div class="tl-text">
+                        <strong>The moment we grab a table</strong>, you get a confirmation email from us with the Japanese booking code from the cafe.
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- 3. WHEN TO EXPECT FIRST EMAIL -->
+        <div class="card">
+            <div class="section-title">When to expect your first email</div>
+            <div class="email-eta">
+                
+                <!-- Cancellation-catch: no "next release wave" exists for
+                     this already-released date, so the wave-framed ETA
+                     ("first status update by 6 PM JST the next day, after
+                     the next release wave runs") is false and is what
+                     drives the dispute for customers like #1999. Use the
+                     accurate scanning copy instead. -->
+                <div class="eta-line">
+                    <div>
+                        <p>
+                            Our bot is scanning for available slots every few minutes. As soon as one opens up, we grab it and send you a confirmation email. We keep trying right up to your date. If we can&#39;t get it, full automatic refund.
+                        </p>
+                    </div>
+                </div>
+                <hr class="eta-divider">
+                
+                <p class="eta-note">
+                    Add <strong>bookings@cafesnapbot.com</strong> to your contacts so our emails don&#39;t land in spam. You can also check progress anytime at <a href="/cafesnap-preview/status.html" style="color:var(--poke-blue);font-weight:700;">cafesnapbot.com/status</a>.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4. REFUND COMMITMENT -->
+        <div class="card" style="padding:24px;">
+            <div class="refund-card">
+                <div class="refund-head">
+                    <div class="refund-icon">&#163;</div>
+                    <h3>Our refund promise</h3>
+                </div>
+                <p>
+                    If we can&#39;t book your slot by <strong>the day after your last preferred date passes</strong>, we automatically refund you in full.
+                    <strong>No action needed on your side.</strong> The refund hits the card you paid with in 5 to 10 business days.
+                </p>
+            </div>
+        </div>
+
+        <!-- 5. CONTACT -->
+        <div class="card" style="padding:24px;">
+            <div class="contact-card">
+                <h3>Questions? We&#39;re here.</h3>
+                <p>
+                    Fastest reply is Telegram (we usually answer within an hour during UK and Japan daytime). Email works too if Telegram isn&#39;t your thing.
+                </p>
+                <div class="contact-row">
+                    <a class="contact-btn telegram" href="https://t.me/cafesnap_support_bot" target="_blank" rel="noopener">
+                        Telegram support
+                    </a>
+                    <a class="contact-btn email" href="mailto:bookings@cafesnapbot.com">
+                        bookings@cafesnapbot.com
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. WHAT NOT TO DO -->
+        <div class="card" style="padding:24px;">
+            <div class="warn-card">
+                <h3>Please don&#39;t do these (it breaks the booking)</h3>
+                <ul>
+                    <li><strong>Don&#39;t try to book the same date on the cafe&#39;s site yourself.</strong> You&#39;d be competing for the same limited slots. Let us handle it.</li>
+                    <li><strong>Leave the cafe&#39;s website to us.</strong> We manage the entire booking process on our end. You don&#39;t need to create an account or do anything on the cafe&#39;s site.</li>
+                    <li><strong>Don&#39;t pay a second time</strong> for the same date with us. If you want to add a backup date, message us on Telegram first so we don&#39;t double-charge you.</li>
+                    <li><strong>Don&#39;t worry if you don&#39;t hear from us for a few hours.</strong> Most bookings are secured in the first wave, but cancellation hunting can take days. We&#39;ll email the moment we have news.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="card" style="padding:20px 24px;">
+            <div class="btn-row">
+                <a href="/cafesnap-preview/status.html" class="btn">Check booking status</a>
+                <a href="/cafesnap-preview/index.html" class="btn btn-secondary">Book another date</a>
+            </div>
+        </div>
+
+        <!-- SHARE -->
+        <div class="card" style="padding:20px;">
+            <div class="share-card">
+                <p>Know someone visiting Japan?</p>
+                <div class="share-row">
+                    <a class="share-btn whatsapp" href="https://wa.me/?text=I%20just%20booked%20the%20Pokemon%20Cafe%20using%20CafeSnap%20-%20they%20grab%20your%20table%20automatically!%20cafesnapbot.com%3Futm_source%3Dwhatsapp%26utm_medium%3Dreferral" target="_blank" rel="noopener">WhatsApp</a>
+                    <a class="share-btn twitter" href="https://twitter.com/intent/tweet?text=Just%20booked%20the%20Pokemon%20Cafe%20using%20CafeSnap%20-%20they%20grab%20your%20table%20automatically!%20cafesnapbot.com%3Futm_source%3Dtwitter%26utm_medium%3Dreferral" target="_blank" rel="noopener">Twitter</a>
+                    <button class="share-btn copy" onclick="navigator.clipboard.writeText('cafesnapbot.com?utm_source=copy&utm_medium=referral');this.textContent='Copied!'">Copy link</button>
+                </div>
+            </div>
+        </div>
+    
+
+    </div>
+
+    
+    <script>
+    if (typeof gtag === 'function') {
+        gtag('event', 'purchase', {
+            transaction_id: '1234',
+            value: 10.0,
+            currency: 'GBP',
+            items: [{item_name: 'Pokemon Cafe Reservation'}],
+        });
+        
+    }
+    
+    </script>
+    
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1b3a;color:#fff;padding:14px 20px;z-index:9999;font-size:0.85rem;line-height:1.5;box-shadow:0 -2px 12px rgba(0,0,0,0.15);">
+    <div style="max-width:600px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <p style="margin:0;flex:1;min-width:200px;">We use cookies for analytics and to improve your experience. <a href="/cafesnap-preview/terms.html" style="color:#ffcb05;text-decoration:underline;">Learn more</a></p>
+        <div style="display:flex;gap:8px;">
+            <button onclick="localStorage.setItem('cafesnap_consent','granted');gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});this.closest('#cookie-banner').style.display='none'" style="background:#ffcb05;color:#1a1b3a;border:none;padding:10px 20px;border-radius:8px;font-weight:800;font-size:0.85rem;cursor:pointer;min-height:44px;">Accept</button>
+            <button onclick="localStorage.setItem('cafesnap_consent','denied');this.closest('#cookie-banner').style.display='none'" style="background:transparent;color:#aaa;border:1px solid #555;padding:10px 16px;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;min-height:44px;">Decline</button>
+        </div>
+    </div>
+</div>
+<script>if(!localStorage.getItem('cafesnap_consent'))document.getElementById('cookie-banner').style.display='block';</script>
+</body>
+</html>
