@@ -134,6 +134,17 @@
             font-weight: 700;
             text-decoration: none;
         }
+
+        /* ---- RESPONSIVE: header must be pixel-identical to index.html.
+           cancel.html uses .header-brand h1 / .header-brand p selectors
+           but the rendered size must match index.html's mobile header
+           (1.45rem h1, not 1.6rem) so the logo does not look bigger than
+           the homepage on phones. ---- */
+        @media (max-width: 520px) {
+            .header { padding: 16px 12px 14px; border-radius: 0 0 20px 20px; }
+            .header-brand h1 { font-size: 1.45rem; }
+            .header-brand p { font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>

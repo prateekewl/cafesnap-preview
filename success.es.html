@@ -486,9 +486,20 @@
         .share-btn.twitter { background: #1DA1F2; }
         .share-btn.copy { background: #e8e8ee; color: var(--poke-navy); }
 
+        /* ---- RESPONSIVE: header must be pixel-identical to index.html.
+           Was @media 480px with .header h1 1.4rem (wrong breakpoint AND
+           wrong size vs index.html's 520px / 1.45rem), so the logo did
+           not match the homepage on phones. Ported verbatim from
+           index.html. The other mobile fine-tuning below is success-only
+           and stays at its original 480px breakpoint. ---- */
+        @media (max-width: 520px) {
+            .header { padding: 16px 12px 14px; border-radius: 0 0 20px 20px; }
+            .header h1 { font-size: 1.45rem; }
+            .header .header-tagline { font-size: 0.7rem; }
+        }
+
         /* ---- MOBILE FINE-TUNING ---- */
         @media (max-width: 480px) {
-            .header h1 { font-size: 1.4rem; }
             .card { padding: 24px 18px; }
             .hero h2 { font-size: 1.35rem; }
             .section-title { font-size: 0.98rem; }

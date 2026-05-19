@@ -179,6 +179,18 @@
             font-weight: 800;
             color: #2e7d32;
         }
+
+        /* ---- RESPONSIVE: header must be pixel-identical to index.html.
+           index.html shrinks the header on phones via this exact block;
+           status.html had no media query so its logo rendered visibly
+           bigger than the homepage on mobile (1.6rem vs 1.45rem). The
+           tagline <p> here is inline-styled, so !important is required
+           to match index.html's 0.7rem mobile size. ---- */
+        @media (max-width: 520px) {
+            .header { padding: 16px 12px 14px; border-radius: 0 0 20px 20px; }
+            .header h1 { font-size: 1.45rem; }
+            .header p { font-size: 0.7rem !important; }
+        }
     </style>
 </head>
 <body>
@@ -461,7 +473,7 @@ PREVIEW - visual only, not the live site
                                 <button onclick="cancelBooking(${b.id})" style="margin-top:10px;width:100%;padding:10px;background:white;border:2px solid #e0e0e0;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#888;cursor:pointer;">${tt('status.js.cancel_searching_btn','Cancel booking (processing fee applies)')}</button>
                             ` : ''}
                             ${b.status === 'waiting_for_release' ? `
-                                <div style="margin-top:8px;padding:10px;background:#fffbea;border-radius:10px;text-align:center;font-size:0.8rem;color:#8a6d00;font-weight:700;">${tt('status.js.waiting_card','Your date opens at the cafe on the 17 May release. Our bot fires the instant it opens. We will email you the moment we secure your table, or refund you in full automatically if we cannot.')}</div>
+                                <div style="margin-top:8px;padding:10px;background:#fffbea;border-radius:10px;text-align:center;font-size:0.8rem;color:#8a6d00;font-weight:700;">${tt('status.js.waiting_card','Your date has not opened at the cafe yet. Our bot fires the instant it opens and then keeps watching for cancellations. We will email you the moment we secure your table, or refund you in full automatically if we cannot.')}</div>
                                 <button onclick="cancelBooking(${b.id})" style="margin-top:10px;width:100%;padding:10px;background:white;border:2px solid #e0e0e0;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#888;cursor:pointer;">${tt('status.js.cancel_searching_btn','Cancel booking (processing fee applies)')}</button>
                             ` : ''}
                             ${b.status === 'scanning_cancellations' ? `

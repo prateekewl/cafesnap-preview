@@ -1,6 +1,6 @@
 # CafeSnap PREVIEW site (static, $0 GitHub Pages)
 
-Auto-generated from `origin/main` commit `3d62778`.
+Auto-generated from `fix/header-pixel-match-and-advance-email` commit `b923cca`.
 
 Every page carries a fixed red PREVIEW ribbon. This is a VISUAL
 preview only: no live booking, no payment, no database. Do not

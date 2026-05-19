@@ -135,6 +135,17 @@
             line-height: 1.8;
         }
         footer a { color: #888; display: inline-block; padding: 6px 4px; min-height: 44px; line-height: 44px; }
+
+        /* ---- RESPONSIVE: header must be pixel-identical to index.html.
+           Ported verbatim from index.html so the logo does not render
+           bigger than the homepage on phones (1.45rem, not 1.6rem). The
+           tagline <p> is inline-styled so !important matches the 0.7rem
+           mobile size. ---- */
+        @media (max-width: 520px) {
+            .header { padding: 16px 12px 14px; border-radius: 0 0 20px 20px; }
+            .header h1 { font-size: 1.45rem; }
+            .header p { font-size: 0.7rem !important; }
+        }
     </style>
 </head>
 <body>
